@@ -10,7 +10,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-airline'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'mileszs/ack.vim'
+Plugin 'rking/ag.vim'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
@@ -78,8 +78,8 @@ nnoremap <Down> :echoe "Use j"<CR>
 set noswapfile " no swap
 
 if executable('ag')
-  " use ag over grep
-  let g:ackprg = 'ag --vimgrep'
+  " highlight ag searches
+  let g:ag_highlight = 1
 
   " use ag in CtrlP for listing files
   let g:ctrlp_user_command = 'ag %s -l --nocolor --nogroup --hidden
@@ -97,7 +97,6 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 let g:ctrlp_switch_buffer = 0
-let g:ackhighlight = 1 " highlight search pattern
 
 set background=dark
 
