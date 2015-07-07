@@ -1,5 +1,11 @@
 source ~/antigen.zsh
-eval "$(fasd --init auto)"
+if which fasd &>/dev/null ; then
+  eval "$(fasd --init auto)"
+fi
+# load rbenv if available
+if which rbenv &>/dev/null ; then
+  eval "$(rbenv init - zsh --no-rehash)"
+fi
 
 antigen use oh-my-zsh
 
