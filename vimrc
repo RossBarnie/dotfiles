@@ -144,7 +144,7 @@ nmap <Leader>et :vsp ~/.tmux.conf<CR>
 nmap <leader>h :noh<CR>
 
 " shortcut for project-wide search
-nmap <leader>f :Ack -Q
+nmap <leader>f :Ag<SPACE>
 
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
