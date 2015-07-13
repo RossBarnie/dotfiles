@@ -98,9 +98,9 @@ set background=dark
 
 " NERDTree
 " Toggle nerdtree with C-n
-map <C-n> :NERDTreeTabsToggle<CR>
+noremap <C-n> :NERDTreeTabsToggle<CR>
 " current file in tree
-map <<F9> :NERDTreeFind<CR>
+noremap <<F9> :NERDTreeFind<CR>
 set timeoutlen=1000 ttimeoutlen=0
 set showcmd
 
@@ -120,30 +120,32 @@ set splitright
 let mapleader=","
 
 " Toggle paste mode
-map <leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
+noremap <leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
 
 " clear trailing whitespace
-nmap <silent> <Leader>w mm:%s/\s\+$//g<CR>:noh<CR>`m
+nnoremap <silent> <Leader>w mm:%s/\s\+$//g<CR>:noh<CR>`m
 
 " indent whole file
-map <Leader>i mmgg=G`m<CR>
+noremap <Leader>i mmgg=G`m<CR>
 
 " edit vimrc
-nmap <Leader>ev :vsp $MYVIMRC<CR>
+nnoremap <Leader>ev :vsp $MYVIMRC<CR>
 " reload vimrc
-nmap <Leader>r :so $MYVIMRC<CR>:echo 'vimrc reloaded'<CR>
+nnoremap <Leader>r :so $MYVIMRC<CR>:echom 'vimrc reloaded'<CR>
 
 " edit tmux.conf
-nmap <Leader>et :vsp ~/.tmux.conf<CR>
+nnoremap <Leader>et :vsp ~/.tmux.conf<CR>
 
 " turn off search highlight
-nmap <leader>h :noh<CR>
+nnoremap <leader>h :noh<CR>
 
 " shortcut for project-wide search
-nmap <leader>f :Ag<SPACE>
+nnoremap <leader>f :Ag<SPACE>
 
 " automatically rebalance windows on vim resize
-autocmd VimResized * :wincmd =
+augroup auto_resize
+  autocmd VimResized * :wincmd =
+augroup END
 
 " bindings for vim-rspec
 let g:rspec_command="VtrSendCommand! bundle exec rspec {spec}"
@@ -179,7 +181,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 " autocomplete
-imap <tab> <C-P>
+inoremap <tab> <C-P>
 
 " some hack to get a nice cursor on insert mode (only works under tmux)
 " let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
