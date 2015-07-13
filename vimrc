@@ -74,6 +74,8 @@ set noswapfile " no swap
 if executable('ag')
   " highlight ag searches
   let g:ag_highlight = 1
+  " Ag.vim always starts searching from project root, not cwd
+  let g:ag_working_path_mode="r"
 
   " use ag in CtrlP for listing files
   let g:ctrlp_user_command = 'ag %s -l --nocolor --nogroup --hidden
