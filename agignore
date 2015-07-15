@@ -1,7 +1,8 @@
-/.svn
-/../.svn
-/assets/images
-/assets/fonts
-/assets/javascripts/admin/vendor
-/tmp
-/bin
+.svn
+../.svn
+.git
+assets/images
+assets/fonts
+assets/javascripts/admin/vendor
+tmp
+bin
