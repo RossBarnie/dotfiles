@@ -78,16 +78,7 @@ if executable('ag')
   let g:ag_working_path_mode="r"
 
   " use ag in CtrlP for listing files
-  let g:ctrlp_user_command = 'ag %s -l --nocolor --nogroup --hidden
-                              \ --ignore .git
-                              \ --ignore .svn
-                              \ --ignore .DS_Store
-                              \ --ignore assets/images/
-                              \ --ignore assets/fonts/
-                              \ --ignore assets/javascripts/admin/vendor/
-                              \ --ignore tmp/
-                              \ --ignore bin/
-                              \ -g ""'
+  let g:ctrlp_user_command = 'ag -p ~/.agignore %s -l --nocolor --nogroup --hidden -g ""'
 
   " ag is fast enough that CtrlP doens't need to cache
   let g:ctrlp_use_caching = 0
