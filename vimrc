@@ -122,7 +122,7 @@ noremap <Leader>i mmgg=G`m<CR>
 " edit vimrc
 nnoremap <Leader>ev :vsp $MYVIMRC<CR>
 " reload vimrc
-nnoremap <Leader>r :so $MYVIMRC<CR>:echom 'vimrc reloaded'<CR>
+nnoremap <Leader>rv :so $MYVIMRC<CR>:echom 'vimrc reloaded'<CR>
 
 " edit tmux.conf
 nnoremap <Leader>et :vsp ~/.tmux.conf<CR>
@@ -147,10 +147,17 @@ map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
 " Vim Tmux Runner commands
+let g:VtrOrientation = "h"
+let g:VtrPercentage = 35
 nnoremap <leader>irb :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd': 'irb'}<CR>
-nnoremap <leader>clr :VtrClearRunner<CR>
+nnoremap <leader>ar :VtrAttachToPane<CR>
+nnoremap <leader>cr :VtrClearRunner<CR>
 nnoremap <leader>or :VtrOpenRunner<CR>
 nnoremap <leader>kr :VtrKillRunner<CR>
+nnoremap <leader>sd :VtrSendCtrlD<CR>
+nnoremap <leader>r :VtrSendLinesToRunner<CR>
+nnoremap <leader>sr :VtrSendCommandToRunner<CR>
+nnoremap <leader>z :VtrFocusRunner<CR>
 
 " Fugitive mappings
 nnoremap <leader>gs :Gstatus<CR>
