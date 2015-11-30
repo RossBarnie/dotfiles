@@ -23,7 +23,7 @@ antigen apply
 
 alias v='f -e vim'
 alias o='a -e atom'
-alias vim='mvim -v'
+alias vim='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
 
 if [[ -e $HOME/.motd ]]; then cat $HOME/.motd; fi
 
