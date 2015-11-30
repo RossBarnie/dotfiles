@@ -20,13 +20,12 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'tpope/vim-obsession'
 Plugin 'christoomey/vim-tmux-runner'
-Plugin 'scrooloose/syntastic'
+Plugin 'benekastah/neomake'
 
 call vundle#end()
 
 filetype plugin indent on
 
-set nocompatible " use vim bindings
 set ttyfast " indicates fast terminal connection
 set lazyredraw " screen not redrawn while executing macros
 set list " show invisibles
@@ -55,6 +54,7 @@ set nobackup " don't keep backups of current file
 set wildmenu " enhanced tab completion for new files
 set colorcolumn=80
 set autoread " automatically read files changed on disk
+set re=1 " use old regex engine, should help with ruby files being slow
 
 " use semi-colon to activate commands
 nnoremap ; :
@@ -99,7 +99,7 @@ set showcmd
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline_theme = 'durant'
+let g:airline_theme = 'molokai'
 
 colorscheme Benokai
 
@@ -147,14 +147,13 @@ map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
 " Vim Tmux Runner commands
-let g:VtrOrientation = "h"
+let g:VtrOrientation = "v"
 let g:VtrPercentage = 35
-nnoremap <leader>irb :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd': 'irb'}<CR>
+nnoremap <leader>irb :VtrOpenRunner {'cmd': 'irb'}<CR>
 nnoremap <leader>ar :VtrAttachToPane<CR>
 nnoremap <leader>cr :VtrClearRunner<CR>
 nnoremap <leader>or :VtrOpenRunner<CR>
 nnoremap <leader>kr :VtrKillRunner<CR>
-nnoremap <leader>sd :VtrSendCtrlD<CR>
 nnoremap <leader>r :VtrSendLinesToRunner<CR>
 nnoremap <leader>sr :VtrSendCommandToRunner<CR>
 nnoremap <leader>z :VtrFocusRunner<CR>
@@ -169,13 +168,15 @@ nnoremap <UP> :<UP>
 
 set noshowmode
 
+" Neomake stuff (Syntastic replacement)
+autocmd! BufWritePost * Neomake
 " Syntastic-related stuff
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_enable_signs = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" let g:syntastic_enable_signs = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
 
 " autocomplete
 inoremap <tab> <C-P>
