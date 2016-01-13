@@ -170,6 +170,14 @@ set noshowmode
 
 " Neomake stuff (Syntastic replacement)
 autocmd! BufWritePost * Neomake
+let g:neomake_haml_haml_maker = {
+    \ 'args': ['-c'],
+    \ 'errorformat': 'Haml error on line %l: %m,' .
+        \ 'Syntax error on line %l: %m,' .
+        \ '%-G%.%#'
+    \ }
+let g:neomake_haml_enabled_makers = ['haml']
+
 " Syntastic-related stuff
 " set statusline+=%#warningmsg#
 " set statusline+=%{SyntasticStatuslineFlag()}
