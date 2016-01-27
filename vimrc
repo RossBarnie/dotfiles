@@ -21,6 +21,8 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'tpope/vim-obsession'
 Plugin 'christoomey/vim-tmux-runner'
 Plugin 'benekastah/neomake'
+Plugin 'fatih/vim-go'
+Plugin 'JamshedVesuna/vim-markdown-preview'
 
 call vundle#end()
 
@@ -192,3 +194,6 @@ inoremap <tab> <C-P>
 " some hack to get a nice cursor on insert mode (only works under tmux)
 " let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
 " let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+
+let vim_markdown_preview_hotkey='<C-m>'
+let vim_markdown_preview_github=1
