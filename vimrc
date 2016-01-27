@@ -23,6 +23,9 @@ Plugin 'christoomey/vim-tmux-runner'
 Plugin 'benekastah/neomake'
 Plugin 'fatih/vim-go'
 Plugin 'JamshedVesuna/vim-markdown-preview'
+Plugin 'tpope/vim-endwise'
+Plugin 'danro/rename.vim'
+Plugin 'tpope/vim-haml'
 
 call vundle#end()
 
