@@ -40,4 +40,6 @@ ensure_tmux_is_running() {
 ensure_tmux_is_running
 
 
-source /usr/local/lib/dnx/bin/dnvm.sh
+if [[ -f /usr/local/lib/dnx/bin/dnvm.sh ]]; then
+  source /usr/local/lib/dnx/bin/dnvm.sh
+fi
