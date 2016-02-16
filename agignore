@@ -3,6 +3,8 @@
 .git
 assets/images
 assets/fonts
-assets/javascripts/admin/vendor
+*.sql
 tmp
 bin
+coverage
+rdoc
