@@ -184,14 +184,6 @@ let g:neomake_haml_haml_maker = {
     \ }
 let g:neomake_haml_enabled_makers = ['haml']
 
-" Syntastic-related stuff
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-" let g:syntastic_enable_signs = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-
 " autocomplete
 inoremap <tab> <C-P>
 
