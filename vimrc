@@ -173,7 +173,9 @@ nnoremap <UP> :<UP>
 set noshowmode
 
 " Neomake stuff (Syntastic replacement)
-autocmd! BufWritePost * Neomake
+augroup auto_syntax_check
+  autocmd! BufWritePost * Neomake
+augroup END
 let g:neomake_haml_haml_maker = {
     \ 'args': ['-c'],
     \ 'errorformat': 'Haml error on line %l: %m,' .
