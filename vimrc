@@ -65,7 +65,7 @@ nnoremap ; :
 vnoremap ; :
 
 " ignore certain files when using fuzzy search
-let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**;assets/**"
+let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**;*.sql"
 
 " Only one way to learn...
 nnoremap <Left> :echoe "Use h"<CR>
