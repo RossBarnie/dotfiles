@@ -84,7 +84,7 @@ if executable('ag')
   " use ag in CtrlP for listing files
   let g:ctrlp_user_command = 'ag -p ~/.agignore %s -l --nocolor --nogroup --hidden -g ""'
 
-  " ag is fast enough that CtrlP doens't need to cache
+  " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
 endif
 let g:ctrlp_switch_buffer = 0
