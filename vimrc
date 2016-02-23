@@ -185,11 +185,7 @@ let g:neomake_haml_haml_maker = {
 let g:neomake_haml_enabled_makers = ['haml']
 
 " autocomplete
-inoremap <tab> <C-P>
-
-" some hack to get a nice cursor on insert mode (only works under tmux)
-" let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-" let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+inoremap <C-tab> <C-P>
 
 let vim_markdown_preview_hotkey='<C-m>'
 let vim_markdown_preview_github=1
