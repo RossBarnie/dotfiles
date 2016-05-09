@@ -59,6 +59,7 @@ set wildmenu " enhanced tab completion for new files
 set colorcolumn=80
 set autoread " automatically read files changed on disk
 set re=1 " use old regex engine, should help with ruby files being slow
+set cursorline! " highlight the current line of the cursor
 
 " use semi-colon to activate commands
 nnoremap ; :
