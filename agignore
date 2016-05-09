@@ -1,3 +1,5 @@
+*.jpg
+*.svg
 .svn
 ../.svn
 .git
