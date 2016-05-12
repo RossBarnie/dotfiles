@@ -98,13 +98,12 @@ noremap <<F9> :NERDTreeFind<CR>
 set timeoutlen=1000 ttimeoutlen=0
 set showcmd
 
+colorscheme flatland
+
 " Airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline_theme = 'molokai'
-
-colorscheme Benokai
+let g:airline_theme = 'bubblegum'
 
 " Vim splits
 set splitbelow
