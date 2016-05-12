@@ -23,6 +23,7 @@ Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'tpope/vim-endwise'
 Plugin 'danro/rename.vim'
 Plugin 'tpope/vim-haml'
+Plugin 'airblade/vim-gitgutter'
 
 call vundle#end()
 
@@ -167,3 +168,6 @@ inoremap <C-tab> <C-P>
 
 let vim_markdown_preview_hotkey='<C-m>'
 let vim_markdown_preview_github=1
+
+" Git gutter
+let gitgutter_sign_column_always = 1
