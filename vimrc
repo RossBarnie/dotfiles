@@ -9,7 +9,6 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'rking/ag.vim'
 Plugin 'ntpeters/vim-better-whitespace'
@@ -18,7 +17,6 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'tpope/vim-obsession'
-Plugin 'christoomey/vim-tmux-runner'
 Plugin 'benekastah/neomake'
 Plugin 'fatih/vim-go'
 Plugin 'JamshedVesuna/vim-markdown-preview'
@@ -36,7 +34,6 @@ set list " show invisibles
 set listchars=eol:¬ " custom eol character
 set number " show line numbers
 set ruler " show line and column number
-" set printoptions=number:y " shows line numbers in 'printed'? output
 set laststatus=2 number title hlsearch " no idea
 set showtabline=2 " always show tabs
 syntax enable
@@ -142,26 +139,6 @@ nnoremap <leader>f :Ag<SPACE>
 augroup auto_resize
   autocmd VimResized * :wincmd =
 augroup END
-
-" bindings for vim-rspec
-let g:rspec_command="VtrSendCommand! bundle exec rspec {spec}"
-let g:rspec_runner="os_x_iterm"
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
-
-" Vim Tmux Runner commands
-let g:VtrOrientation = "v"
-let g:VtrPercentage = 35
-nnoremap <leader>irb :VtrOpenRunner {'cmd': 'irb'}<CR>
-nnoremap <leader>ar :VtrAttachToPane<CR>
-nnoremap <leader>cr :VtrClearRunner<CR>
-nnoremap <leader>or :VtrOpenRunner<CR>
-nnoremap <leader>kr :VtrKillRunner<CR>
-nnoremap <leader>r :VtrSendLinesToRunner<CR>
-nnoremap <leader>sr :VtrSendCommandToRunner<CR>
-nnoremap <leader>z :VtrFocusRunner<CR>
 
 " Fugitive mappings
 nnoremap <leader>gs :Gstatus<CR>

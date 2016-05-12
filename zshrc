@@ -25,20 +25,7 @@ alias v='f -e vim'
 alias o='a -e atom'
 alias vim='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
 
-if [[ -e $HOME/.motd ]]; then cat $HOME/.motd; fi
-
 function scap() { DEPLOY_ENV=staging cap $1 --set deploy_environment="staging" --set-before deploy_environment="staging" }
-
-_not_inside_tmux() { [[ -z "$TMUX" ]] }
-
-ensure_tmux_is_running() {
-  if _not_inside_tmux; then
-    tat
-  fi
-}
-
-ensure_tmux_is_running
-
 
 if [[ -f /usr/local/lib/dnx/bin/dnvm.sh ]]; then
   source /usr/local/lib/dnx/bin/dnvm.sh
