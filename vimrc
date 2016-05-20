@@ -130,7 +130,7 @@ nnoremap <Leader>rv :so $MYVIMRC<CR>:echom 'vimrc reloaded'<CR>
 nnoremap <leader>h :noh<CR>
 
 " shortcut for project-wide search
-nnoremap <leader>f :Ag<SPACE>
+nnoremap <leader>f :Ag<SPACE>""<LEFT>
 
 " automatically rebalance windows on vim resize
 augroup auto_resize
