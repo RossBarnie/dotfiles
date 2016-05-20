@@ -126,9 +126,6 @@ nnoremap <Leader>ev :vsp $MYVIMRC<CR>
 " reload vimrc
 nnoremap <Leader>rv :so $MYVIMRC<CR>:echom 'vimrc reloaded'<CR>
 
-" edit tmux.conf
-nnoremap <Leader>et :vsp ~/.tmux.conf<CR>
-
 " turn off search highlight
 nnoremap <leader>h :noh<CR>
 
