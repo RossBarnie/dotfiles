@@ -24,6 +24,7 @@ Plugin 'tpope/vim-endwise'
 Plugin 'danro/rename.vim'
 Plugin 'tpope/vim-haml'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'elixir-lang/vim-elixir'
 
 call vundle#end()
 
@@ -59,13 +60,14 @@ set colorcolumn=80
 set autoread " automatically read files changed on disk
 set re=1 " use old regex engine, should help with ruby files being slow
 set cursorline! " highlight the current line of the cursor
+set termguicolors
 
 " use semi-colon to activate commands
 nnoremap ; :
 vnoremap ; :
 
 " ignore certain files when using fuzzy search
-let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**;*.sql"
+let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**;*.sql;_build/**"
 
 " Only one way to learn...
 nnoremap <Left> :echoe "Use h"<CR>
