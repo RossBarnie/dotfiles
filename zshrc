@@ -23,7 +23,8 @@ antigen apply
 
 alias v='f -e vim'
 alias o='a -e atom'
-alias vim='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
+alias vim='nvim'
+alias shipit='bundle exec cap production deploy'
 
 function scap() { DEPLOY_ENV=staging cap $1 --set deploy_environment="staging" --set-before deploy_environment="staging" }
 
