@@ -35,7 +35,6 @@ set lazyredraw " screen not redrawn while executing macros
 set list " show invisibles
 set listchars=eol:¬ " custom eol character
 set number " show line numbers
-set relativenumber " show relative line numbers
 set ruler " show line and column number
 set laststatus=2 number title hlsearch " no idea
 set showtabline=2 " always show tabs
