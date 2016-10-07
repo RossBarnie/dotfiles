@@ -25,9 +25,3 @@ alias v='f -e vim'
 alias o='a -e atom'
 alias vim='nvim'
 alias shipit='bundle exec cap production deploy'
-
-function scap() { DEPLOY_ENV=staging cap $1 --set deploy_environment="staging" --set-before deploy_environment="staging" }
-
-if [[ -f /usr/local/lib/dnx/bin/dnvm.sh ]]; then
-  source /usr/local/lib/dnx/bin/dnvm.sh
-fi
