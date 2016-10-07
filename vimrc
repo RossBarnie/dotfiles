@@ -10,7 +10,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'rking/ag.vim'
+Plugin 'mileszs/ack.vim'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-surround'
@@ -77,10 +77,9 @@ nnoremap <Down> :echoe "Use j"<CR>
 set noswapfile " no swap
 
 if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
   " highlight ag searches
-  let g:ag_highlight = 1
-  " Ag.vim always starts searching from project root, not cwd
-  let g:ag_working_path_mode="r"
+   let g:ackhighlight = 1
 
   " use ag in CtrlP for listing files
   let g:ctrlp_user_command = 'ag -p ~/.agignore %s -l --nocolor --nogroup --hidden -g ""'
@@ -88,6 +87,8 @@ if executable('ag')
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
 endif
+let g:ctrlp_switch_buffer = 0
+
 let g:ctrlp_switch_buffer = 0
 
 set background=dark
@@ -132,7 +133,7 @@ nnoremap <Leader>rv :so $MYVIMRC<CR>:echom 'vimrc reloaded'<CR>
 nnoremap <leader>h :noh<CR>
 
 " shortcut for project-wide search
-nnoremap <leader>f :Ag<SPACE>""<LEFT>
+nnoremap <leader>f :Ack!<SPACE>""<LEFT>
 
 " automatically rebalance windows on vim resize
 augroup auto_resize
