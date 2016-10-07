@@ -125,9 +125,9 @@ nnoremap <silent> <Leader>w mm:%s/\s\+$//g<CR>:noh<CR>`m
 noremap <Leader>i mmgg=G`m<CR>
 
 " edit vimrc
-nnoremap <Leader>ev :vsp $MYVIMRC<CR>
+nnoremap <Leader>ev :vsp ~/.vimrc<CR>
 " reload vimrc
-nnoremap <Leader>rv :so $MYVIMRC<CR>:echom 'vimrc reloaded'<CR>
+nnoremap <Leader>rv :so ~/.vimrc<CR>:echom 'vimrc reloaded'<CR>
 
 " turn off search highlight
 nnoremap <leader>h :noh<CR>
