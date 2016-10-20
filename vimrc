@@ -1,32 +1,33 @@
-set nocompatible
-filetype off
+if !has('nvim')
+  set nocompatible
+endif
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/bundle')
 
-Plugin 'gmarik/Vundle.vim'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'mileszs/ack.vim'
-Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'thoughtbot/vim-rspec'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-fugitive'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'tpope/vim-obsession'
-Plugin 'benekastah/neomake'
-Plugin 'fatih/vim-go'
-Plugin 'JamshedVesuna/vim-markdown-preview'
-Plugin 'tpope/vim-endwise'
-Plugin 'danro/rename.vim'
-Plugin 'tpope/vim-haml'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'elixir-lang/vim-elixir'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'mileszs/ack.vim'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'kchmck/vim-coffee-script'
+Plug 'tpope/vim-obsession'
+if has('nvim')
+  Plug 'benekastah/neomake'
+endif
+Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'tpope/vim-endwise'
+Plug 'danro/rename.vim'
+Plug 'tpope/vim-haml'
+Plug 'airblade/vim-gitgutter'
+Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 
-call vundle#end()
+call plug#end()
 
 filetype plugin indent on
 
