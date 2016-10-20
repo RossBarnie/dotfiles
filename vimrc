@@ -114,11 +114,13 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme = 'bubblegum'
 let g:airline#extensions#branch#format = 1 " feature/foo becomes foo
-let g:airline_section_a = airline#section#create_left(['mode', 'crypt', 'paste', 'spell', 'iminsert', 'branch'])
-let g:airline_section_b = ''
-let g:airline_section_x = airline#section#create(['hunks'])
-let g:airline_section_y = ''
-let g:airline_section_z = ''
+let g:airline#extensions#ctrlp#show_adjacent_modes = 0
+function! AirlineInit()
+  let g:airline_section_a = airline#section#create_left(['mode', 'crypt', 'paste', 'spell', 'iminsert', 'branch'])
+  let g:airline_section_b = airline#section#create(['hunks'])
+  let g:airline_section_y = ''
+endfunction
+autocmd User AirlineAfterInit call AirlineInit()
 
 " set leader
 let mapleader=","
