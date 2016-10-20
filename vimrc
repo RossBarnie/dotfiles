@@ -178,3 +178,13 @@ let vim_markdown_preview_github=1
 
 " Git gutter
 let gitgutter_sign_column_always = 1
+
+" Syntax Highlighting help
+" Show syntax highlighting groups for word under cursor
+nmap <C-S-P> :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
