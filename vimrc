@@ -151,6 +151,8 @@ nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gd :Gdiff<CR>
 
+nnoremap <leader>d :CtrlPTag<CR>
+
 " bind UP to :<UP>
 nnoremap <UP> :<UP>
 
