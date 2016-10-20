@@ -107,7 +107,7 @@ nnoremap <leader>d :CtrlPTag<CR>
 " Toggle nerdtree with C-n
 noremap <C-n> :NERDTreeTabsToggle<CR>
 " current file in tree
-noremap <<F9> :NERDTreeFind<CR>
+noremap <F9> :NERDTreeFind<CR>
 
 " Airline
 let g:airline_powerline_fonts = 1
