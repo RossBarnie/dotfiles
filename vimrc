@@ -168,7 +168,7 @@ let g:neomake_haml_haml_maker = {
 let g:neomake_haml_enabled_makers = ['haml']
 
 " autocomplete
-inoremap <C-tab> <C-P>
+" Built-in, just use C-n
 
 let vim_markdown_preview_hotkey='<C-m>'
 let vim_markdown_preview_github=1
