@@ -185,3 +185,6 @@ function! <SID>SynStack()
   endif
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
+
+command! MakeTags !ctags -R .
+nnoremap <leader>mt :MakeTags<CR>
