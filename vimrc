@@ -101,8 +101,7 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 let g:ctrlp_switch_buffer = 0
-
-let g:ctrlp_switch_buffer = 0
+nnoremap <leader>d :CtrlPTag<CR>
 
 " NERDTree
 " Toggle nerdtree with C-n
@@ -152,8 +151,6 @@ autocmd vimrc VimResized * :wincmd =
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gd :Gdiff<CR>
-
-nnoremap <leader>d :CtrlPTag<CR>
 
 " bind UP to :<UP>
 nnoremap <UP> :<UP>
