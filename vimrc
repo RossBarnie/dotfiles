@@ -30,15 +30,18 @@ call vundle#end()
 
 filetype plugin indent on
 
-set ttyfast " indicates fast terminal connection
+if !has('nvim')
+  set ttyfast " indicates fast terminal connection
+endif
 set lazyredraw " screen not redrawn while executing macros
 set list " show invisibles
 set listchars=eol:¬ " custom eol character
 set number " show line numbers
-set ruler " show line and column number
-set laststatus=2 number title hlsearch " no idea
+set laststatus=2 " always show status line
+set title " change title of terminal (if supported)
+set hlsearch " highlight search results
 set showtabline=2 " always show tabs
-syntax enable
+syntax on
 set expandtab " use spaces not tabs
 set tabstop=2 " 2 spaces for tab indenting
 set softtabstop=2 " 2 spaces for space indenting
@@ -46,12 +49,11 @@ set shiftwidth=2 " use 2 spaces in autoindenting
 set nowrap " don't wrap long lines
 set backspace=indent,eol,start " backspace can navigate over EOL and indents
 set autoindent " copy indent from previous line when starting a new one
-set copyindent " copy indend format (eg tabs, spaces) when starting a new line
+set copyindent " copy indent format (eg tabs, spaces) when starting a new line
 set smartcase " use smartcase when searching
 set incsearch " use incremental searching (show results as you type)
 set history=500
 set undolevels=500
-set title " set title to value of 'titlestring'
 set visualbell " use a visual bell, not a beep, on error
 set nobackup " don't keep backups of current file
 set wildmenu " enhanced tab completion for new files
@@ -60,6 +62,14 @@ set autoread " automatically read files changed on disk
 set re=1 " use old regex engine, should help with ruby files being slow
 set cursorline! " highlight the current line of the cursor
 set termguicolors
+set timeoutlen=1000 ttimeoutlen=0
+set showcmd
+set noswapfile " no swap
+set background=dark
+colorscheme flatland
+set noshowmode " don't show the mode as Airline is doing it
+set splitbelow
+set splitright
 
 " use semi-colon to activate commands
 nnoremap ; :
@@ -73,8 +83,6 @@ nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
-
-set noswapfile " no swap
 
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
@@ -91,17 +99,11 @@ let g:ctrlp_switch_buffer = 0
 
 let g:ctrlp_switch_buffer = 0
 
-set background=dark
-
 " NERDTree
 " Toggle nerdtree with C-n
 noremap <C-n> :NERDTreeTabsToggle<CR>
 " current file in tree
 noremap <<F9> :NERDTreeFind<CR>
-set timeoutlen=1000 ttimeoutlen=0
-set showcmd
-
-colorscheme flatland
 
 " Airline
 let g:airline_powerline_fonts = 1
@@ -113,10 +115,6 @@ let g:airline_section_b = ''
 let g:airline_section_x = airline#section#create(['hunks'])
 let g:airline_section_y = ''
 let g:airline_section_z = ''
-
-" Vim splits
-set splitbelow
-set splitright
 
 " set leader
 let mapleader=","
@@ -155,8 +153,6 @@ nnoremap <leader>d :CtrlPTag<CR>
 
 " bind UP to :<UP>
 nnoremap <UP> :<UP>
-
-set noshowmode
 
 " Neomake stuff (Syntastic replacement)
 augroup auto_syntax_check
