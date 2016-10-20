@@ -71,6 +71,11 @@ set noshowmode " don't show the mode as Airline is doing it
 set splitbelow
 set splitright
 
+" reset vimrc autocommands
+augroup vimrc
+  autocmd!
+augroup END
+
 " use semi-colon to activate commands
 nnoremap ; :
 vnoremap ; :
@@ -140,9 +145,8 @@ nnoremap <leader>h :noh<CR>
 nnoremap <leader>f :Ack!<SPACE>""<LEFT>
 
 " automatically rebalance windows on vim resize
-augroup auto_resize
-  autocmd VimResized * :wincmd =
-augroup END
+
+autocmd vimrc VimResized * :wincmd =
 
 " Fugitive mappings
 nnoremap <leader>gs :Gstatus<CR>
@@ -155,9 +159,7 @@ nnoremap <leader>d :CtrlPTag<CR>
 nnoremap <UP> :<UP>
 
 " Neomake stuff (Syntastic replacement)
-augroup auto_syntax_check
-  autocmd! BufWritePost * Neomake
-augroup END
+autocmd vimrc BufWritePost * Neomake
 let g:neomake_haml_haml_maker = {
     \ 'args': ['-c'],
     \ 'errorformat': 'Haml error on line %l: %m,' .
