@@ -21,7 +21,5 @@ antigen bundle git-flow
 
 antigen apply
 
-alias v='f -e vim'
-alias o='a -e atom'
 alias vim='nvim'
 alias shipit='bundle exec cap production deploy'
