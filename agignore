@@ -10,3 +10,4 @@ tmp
 bin
 coverage
 rdoc
+_build
