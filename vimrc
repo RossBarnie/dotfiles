@@ -167,6 +167,7 @@ autocmd vimrc FileType markdown set spell tw=80
 " Built-in, just use C-n
 
 let vim_markdown_preview_hotkey='<C-m>'
+let vim_markdown_preview_browser='Google Chrome'
 let vim_markdown_preview_github=1
 
 " Git gutter
