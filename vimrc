@@ -161,6 +161,8 @@ nnoremap <UP> :<UP>
 " Neomake stuff (Syntastic replacement)
 autocmd vimrc BufWritePost * Neomake
 
+autocmd vimrc FileType markdown set spell tw=80
+
 " autocomplete
 " Built-in, just use C-n
 
