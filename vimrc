@@ -160,13 +160,6 @@ nnoremap <UP> :<UP>
 
 " Neomake stuff (Syntastic replacement)
 autocmd vimrc BufWritePost * Neomake
-let g:neomake_haml_haml_maker = {
-    \ 'args': ['-c'],
-    \ 'errorformat': 'Haml error on line %l: %m,' .
-        \ 'Syntax error on line %l: %m,' .
-        \ '%-G%.%#'
-    \ }
-let g:neomake_haml_enabled_makers = ['haml']
 
 " autocomplete
 " Built-in, just use C-n
