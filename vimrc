@@ -153,7 +153,7 @@ autocmd vimrc VimResized * :wincmd =
 " Fugitive mappings
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gb :Gblame<CR>
-nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>gd :Gvdiff<CR>
 
 " bind UP to :<UP>
 nnoremap <UP> :<UP>
