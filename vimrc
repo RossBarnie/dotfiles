@@ -26,6 +26,7 @@ Plug 'danro/rename.vim'
 Plug 'tpope/vim-haml'
 Plug 'airblade/vim-gitgutter'
 Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
+Plug 'sjl/gundo.vim'
 
 call plug#end()
 
@@ -185,3 +186,6 @@ endfunc
 
 command! MakeTags !ctags -R .
 nnoremap <leader>mt :MakeTags<CR>
+
+" Gundo
+nnoremap <leader>u :GundoShow<CR>
