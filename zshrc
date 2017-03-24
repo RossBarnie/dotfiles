@@ -12,7 +12,6 @@ antigen use oh-my-zsh
 antigen theme eastwood
 
 antigen bundle git
-antigen bundle brew
 antigen bundle bundler
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle rails
