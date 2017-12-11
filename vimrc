@@ -141,7 +141,7 @@ nnoremap <silent> <Leader>w mm:%s/\s\+$//g<CR>:noh<CR>`m
 noremap <Leader>i mmgg=G`m<CR>
 
 " edit vimrc
-nnoremap <Leader>ev :vsp ~/.vimrc<CR>
+nnoremap <Leader>ev :tabe ~/.vimrc<CR>
 " reload vimrc
 nnoremap <Leader>rv :so ~/.vimrc<CR>:echom 'vimrc reloaded'<CR>
 
