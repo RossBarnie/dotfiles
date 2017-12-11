@@ -74,6 +74,7 @@ set splitbelow
 set splitright
 set shiftround " round indent to multiple of shiftwidth
 set mouse=a " enable mouse use, I like it for switching contexts (browser to terminal)
+set signcolumn=yes
 
 " reset vimrc autocommands
 augroup vimrc
@@ -164,17 +165,14 @@ nnoremap <UP> :<UP>
 " Neomake stuff (Syntastic replacement)
 autocmd vimrc BufWritePost * Neomake
 
-autocmd vimrc FileType markdown set spell tw=80
+autocmd vimrc FileType markdown set wrap spell textwidth=0 nolist linebreak
 
 " autocomplete
-" Built-in, just use C-n
+" Built-in, just use C-n/C-p
 
 let vim_markdown_preview_hotkey='<C-m>'
 let vim_markdown_preview_browser='Google Chrome'
 let vim_markdown_preview_github=1
-
-" Git gutter
-let gitgutter_sign_column_always = 1
 
 " Syntax Highlighting help
 " Show syntax highlighting groups for word under cursor
