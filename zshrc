@@ -22,3 +22,4 @@ antigen apply
 
 alias vim='nvim'
 alias shipit='bundle exec cap production deploy'
+alias caprod='bundle exec cap production'
