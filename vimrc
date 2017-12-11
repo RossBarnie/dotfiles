@@ -130,6 +130,7 @@ autocmd User AirlineAfterInit call AirlineInit()
 
 " set leader
 let mapleader=","
+let maplocalleader="\\"
 
 " Toggle paste mode
 noremap <leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
@@ -190,3 +191,7 @@ nnoremap <leader>mt :MakeTags<CR>
 
 " Gundo
 nnoremap <leader>u :GundoShow<CR>
+
+" Commenting
+autocmd vimrc FileType vim nnoremap <buffer> <localleader>c mmI"<SPACE><ESC>`m
+autocmd vimrc FileType ruby,eruby,yaml nnoremap <buffer> <localleader>c mmI#<SPACE><ESC>`m
