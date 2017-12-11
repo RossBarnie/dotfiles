@@ -72,6 +72,7 @@ colorscheme flatland
 set noshowmode " don't show the mode as Airline is doing it
 set splitbelow
 set splitright
+set shiftround " round indent to multiple of shiftwidth
 
 " reset vimrc autocommands
 augroup vimrc
