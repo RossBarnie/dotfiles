@@ -73,6 +73,7 @@ set noshowmode " don't show the mode as Airline is doing it
 set splitbelow
 set splitright
 set shiftround " round indent to multiple of shiftwidth
+set mouse=a " enable mouse use, I like it for switching contexts (browser to terminal)
 
 " reset vimrc autocommands
 augroup vimrc
