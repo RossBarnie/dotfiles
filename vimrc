@@ -198,3 +198,6 @@ autocmd vimrc FileType vim nnoremap <buffer> <localleader>c mmI"<SPACE><ESC>`m
 autocmd vimrc FileType ruby,eruby,yaml nnoremap <buffer> <localleader>c mmI#<SPACE><ESC>`m
 
 autocmd vimrc FileType ruby,eruby,yaml setlocal iskeyword+=?
+
+" Ruby interpreter
+let g:ruby_host_prog = '~/.rbenv/versions/2.4.1/bin/neovim-ruby-host'
