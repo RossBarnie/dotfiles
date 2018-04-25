@@ -187,7 +187,7 @@ function! <SID>SynStack()
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
 
-command! MakeTags !ctags -R --exclude=*.js --exclude=*.sass --exclude=*.css --exclude=node_modules .
+command! MakeTags !ctags -R --exclude="*.js" --exclude="*.sass" --exclude="*.css" --exclude=node_modules .
 nnoremap <leader>mt :MakeTags<CR>
 
 " Gundo
