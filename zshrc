@@ -7,6 +7,11 @@ if which rbenv &>/dev/null ; then
   eval "$(rbenv init - --no-rehash zsh)"
 fi
 
+# load secrets
+if [[ -f ~/.zsh/secretenv ]]; then
+  source ~/.zsh/secretenv
+fi
+
 _echoerr () {
   echo $1 >&2
 }
