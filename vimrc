@@ -196,3 +196,5 @@ nnoremap <leader>u :GundoShow<CR>
 " Commenting
 autocmd vimrc FileType vim nnoremap <buffer> <localleader>c mmI"<SPACE><ESC>`m
 autocmd vimrc FileType ruby,eruby,yaml nnoremap <buffer> <localleader>c mmI#<SPACE><ESC>`m
+
+autocmd vimrc FileType ruby,eruby,yaml setlocal iskeyword+=?
