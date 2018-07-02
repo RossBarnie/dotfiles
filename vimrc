@@ -169,7 +169,7 @@ nnoremap <UP> :<UP>
 " Neomake stuff (Syntastic replacement)
 autocmd vimrc BufWritePost * Neomake
 
-autocmd vimrc FileType markdown set wrap spell textwidth=0 nolist linebreak
+autocmd vimrc FileType markdown setlocal wrap spell textwidth=0 nolist linebreak
 
 " autocomplete
 " Built-in, just use C-n/C-p
