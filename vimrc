@@ -202,3 +202,7 @@ autocmd vimrc FileType ruby,eruby,yaml setlocal iskeyword+=?
 
 " Ruby interpreter
 let g:ruby_host_prog = '~/.rbenv/versions/2.4.1/bin/neovim-ruby-host'
+if has('nvim')
+  call neomake#configure#automake('nrw', 750)
+  let g:neomake_list_height=5
+endif
