@@ -17,7 +17,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'kchmck/vim-coffee-script'
 Plug 'tpope/vim-obsession'
 if has('nvim')
-  Plug 'benekastah/neomake'
+  Plug 'neomake/neomake'
 endif
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'JamshedVesuna/vim-markdown-preview'
