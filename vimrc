@@ -106,7 +106,6 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 let g:ctrlp_switch_buffer = 0
-nnoremap <leader>d :CtrlPTag<CR>
 
 " NERDTree
 " Toggle nerdtree with C-n
@@ -130,6 +129,9 @@ autocmd User AirlineAfterInit call AirlineInit()
 " set leader
 let mapleader=","
 let maplocalleader="\\"
+
+" Find definition
+nnoremap <leader>d :CtrlPTag<CR>
 
 " Toggle paste mode
 noremap <leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
