@@ -175,7 +175,7 @@ autocmd vimrc FileType markdown setlocal wrap spell textwidth=0 nolist linebreak
 " Built-in, just use C-n/C-p
 
 let vim_markdown_preview_hotkey='<C-m>'
-let vim_markdown_preview_browser='Google Chrome'
+let vim_markdown_preview_browser='firefox'
 let vim_markdown_preview_github=1
 
 " Syntax Highlighting help
