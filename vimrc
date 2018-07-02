@@ -22,7 +22,6 @@ endif
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'tpope/vim-endwise'
-Plug 'danro/rename.vim'
 Plug 'tpope/vim-haml'
 Plug 'airblade/vim-gitgutter'
 Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
