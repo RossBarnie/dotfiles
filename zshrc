@@ -35,21 +35,6 @@ cd_project () {
   fi
 }
 
-which_server () {
-  if [[ -z "$1" ]]; then
-    project_dir=$( pwd )
-  else
-    project_dir=$( _find_project_dir $1 )
-  fi
-  if [[ -a $project_dir/config/deploy.rb ]]; then
-    grep "^set\ :tictoc_server,\ .*$" $project_dir/config/deploy.rb | cut -d \" -f 2
-    return 0
-  else
-    _echoerr "Project not found"
-    return 1
-  fi
-}
-
 antigen use oh-my-zsh
 
 antigen theme eastwood
