@@ -35,6 +35,14 @@ cd_project () {
   fi
 }
 
+npx () {
+  if [[ -d ./node_modules ]]; then
+    ./node_modules/.bin/$@
+  else
+    _echoerr "No node_modules dir found"
+  fi
+}
+
 antigen use oh-my-zsh
 
 antigen theme eastwood
