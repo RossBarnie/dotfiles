@@ -23,6 +23,7 @@ Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'tpope/vim-endwise'
 Plug 'airblade/vim-gitgutter'
 Plug 'sjl/gundo.vim'
+Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 
 call plug#end()
 
