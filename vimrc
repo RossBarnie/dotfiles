@@ -14,7 +14,6 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
-Plug 'kchmck/vim-coffee-script'
 Plug 'tpope/vim-obsession'
 if has('nvim')
   Plug 'neomake/neomake'
@@ -22,9 +21,7 @@ endif
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-haml'
 Plug 'airblade/vim-gitgutter'
-Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 Plug 'sjl/gundo.vim'
 
 call plug#end()
