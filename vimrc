@@ -113,6 +113,7 @@ noremap <F9> :NERDTreeFind<CR>
 
 " Airline
 let g:airline_powerline_fonts = 0
+let g:airline_symbols_ascii = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme = 'bubblegum'
 let g:airline#extensions#branch#format = 1 " feature/foo becomes foo
