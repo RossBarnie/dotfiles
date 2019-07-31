@@ -153,7 +153,6 @@ nnoremap <leader>h :noh<CR>
 nnoremap <leader>f :Ack!<SPACE>""<LEFT>
 
 " automatically rebalance windows on vim resize
-
 autocmd vimrc VimResized * :wincmd =
 
 " Fugitive mappings
@@ -205,5 +204,3 @@ if has('nvim')
   call neomake#configure#automake('nrw', 750)
   let g:neomake_list_height=5
 endif
-
-command! Today put =strftime('%F')
