@@ -72,6 +72,10 @@ ZSH_THEME="eastwood"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git kubectl docker-compose docker zsh-nvm alias-finder)
 
+if [[ -d $ZSH_CUSTOM/plugins/zsh-syntax-highlighting ]]; then
+  plugins=("${plugins[@]}" zsh-syntax-highlighting)
+fi
+
 export ZSH_ALIAS_FINDER_AUTOMATIC=true
 
 source $ZSH/oh-my-zsh.sh
