@@ -24,6 +24,7 @@ Plug 'tpope/vim-endwise'
 Plug 'airblade/vim-gitgutter'
 Plug 'sjl/gundo.vim'
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
+Plug 'w0ng/vim-hybrid'
 
 call plug#end()
 
@@ -65,7 +66,7 @@ set timeoutlen=1000 ttimeoutlen=0
 set showcmd
 set noswapfile " no swap
 set background=dark
-colorscheme flatland
+colorscheme hybrid
 set noshowmode " don't show the mode as Airline is doing it
 set splitbelow
 set splitright
@@ -115,7 +116,7 @@ noremap <F9> :NERDTreeFind<CR>
 let g:airline_powerline_fonts = 0
 let g:airline_symbols_ascii = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = 'bubblegum'
+let g:airline_theme = 'hybrid'
 let g:airline#extensions#branch#format = 1 " feature/foo becomes foo
 let g:airline#extensions#ctrlp#show_adjacent_modes = 0
 function! AirlineInit()
