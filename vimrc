@@ -35,7 +35,7 @@ if !has('nvim')
 endif
 set lazyredraw " screen not redrawn while executing macros
 set list " show invisibles
-set listchars=eol:¬ " custom eol character
+set listchars+=eol:¬ " custom eol character
 set number " show line numbers
 set laststatus=2 " always show status line
 set title " change title of terminal (if supported)
