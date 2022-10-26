@@ -142,10 +142,19 @@ nnoremap <silent> <Leader>w mm:%s/\s\+$//g<CR>:noh<CR>`m
 " indent whole file
 noremap <Leader>i mmgg=G`m<CR>
 
-" edit vimrc
-nnoremap <Leader>ev :tabe ~/.vimrc<CR>
-" reload vimrc
-nnoremap <Leader>rv :so ~/.vimrc<CR>:echom 'vimrc reloaded'<CR>
+if has('nvim')
+  " edit init.vim config
+  nnoremap <Leader>ev :tabe ~/.config/nvim/init.vim<CR>
+  " reload init.vim
+  nnoremap <Leader>rv :so ~/.config/nvim/init.vim<CR>:echom 'init.vim reloaded'<CR>
+endif
+
+if !has('nvim')
+  " edit vimrc
+  nnoremap <Leader>ev :tabe ~/.vimrc<CR>
+  " reload vimrc
+  nnoremap <Leader>rv :so ~/.vimrc<CR>:echom 'vimrc reloaded'<CR>
+endif
 
 " turn off search highlight
 nnoremap <leader>h :noh<CR>
