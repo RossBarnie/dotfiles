@@ -166,10 +166,10 @@ nnoremap <leader>f :Ack!<SPACE>""<LEFT>
 autocmd vimrc VimResized * :wincmd =
 
 " Fugitive mappings
-nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gc :Gcommit<CR>
-nnoremap <leader>gb :Gblame<CR>
-nnoremap <leader>gd :Gvdiff<CR>
+nnoremap <leader>gs :G status<CR>
+nnoremap <leader>gc :G commit<CR>
+nnoremap <leader>gb :G blame<CR>
+nnoremap <leader>gd :G diff<CR>
 
 " bind UP to :<UP>
 nnoremap <UP> :<UP>
@@ -214,3 +214,4 @@ if has('nvim')
   call neomake#configure#automake('nrw', 750)
   let g:neomake_list_height=5
 endif
+
