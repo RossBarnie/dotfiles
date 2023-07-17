@@ -70,7 +70,7 @@ ZSH_THEME="eastwood"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git kubectl docker-compose docker zsh-nvm alias-finder)
+plugins=(git kubectl alias-finder)
 
 if [[ -d $ZSH_CUSTOM/plugins/zsh-syntax-highlighting ]]; then
   plugins=("${plugins[@]}" zsh-syntax-highlighting)
