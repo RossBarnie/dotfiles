@@ -4,8 +4,6 @@ endif
 
 call plug#begin('~/.vim/bundle')
 
-Plug 'ctrlpvim/ctrlp.vim' " fuzzy file selector
-Plug 'scrooloose/nerdtree' " file tree
 Plug 'vim-airline/vim-airline' " status line replacement
 Plug 'vim-airline/vim-airline-themes' " Themes for airline
 Plug 'mileszs/ack.vim' " Project search
@@ -14,16 +12,21 @@ Plug 'tpope/vim-surround' " Add 'surround' commands, eg cs'
 Plug 'tpope/vim-fugitive' " Git in vim
 Plug 'tpope/vim-obsession' " sessions in vim
 if has('nvim')
+  Plug 'nvim-lua/plenary.nvim' " dependency of telescope
+  Plug 'nvim-telescope/telescope.nvim' " fuzzy finder framework, requires ripgrep
+  Plug 'cljoly/telescope-repo.nvim' " find git repos on local filesystem for quick switching
+  Plug 'airblade/vim-rooter' " change directory when opening files
   Plug 'neovim/nvim-lspconfig' " language server protocol support
   Plug 'b0o/schemastore.nvim' " json/yaml schemas
+  Plug 'ellisonleao/glow.nvim' " Render markdown using glow
 endif
-Plug 'JamshedVesuna/vim-markdown-preview' " preview markdown files
 Plug 'tpope/vim-endwise' " automatically add 'end' to ruby blocks
 Plug 'airblade/vim-gitgutter' " git diff as signs in the sign column
 Plug 'sjl/gundo.vim' " Undo on steroids
 Plug 'w0ng/vim-hybrid' " hybrid colourscheme
 Plug 'doums/darcula' " darcula colourscheme
 Plug 'chr4/nginx.vim' " nginx file support
+Plug 'christoomey/vim-tmux-navigator' " tmux pane movement matches vim pane movement (C-h/j/k/l)
 call plug#end()
 
 filetype plugin indent on
@@ -55,7 +58,7 @@ set undolevels=500
 set visualbell " use a visual bell, not a beep, on error
 set nobackup " don't keep backups of current file
 set wildmenu " enhanced tab completion for new files
-set colorcolumn=120
+set colorcolumn=135
 set autoread " automatically read files changed on disk
 set re=1 " use old regex engine, should help with ruby files being slow
 set cursorline! " highlight the current line of the cursor
@@ -92,25 +95,8 @@ nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-  " highlight ag searches
-   let g:ackhighlight = 1
-
-  " use ag in CtrlP for listing files
-  let g:ctrlp_user_command = 'ag -p ~/.agignore %s -l --nocolor --nogroup --hidden -g ""'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-let g:ctrlp_switch_buffer = 0
-
-" NERDTree
-" Toggle nerdtree with C-n
-noremap <C-n> :NERDTreeTabsToggle<CR>
-" current file in tree
-noremap <F9> :NERDTreeFind<CR>
+" Toggle file explorer with C-n
+noremap <C-n> :Vex<CR>
 
 " Airline
 let g:airline_powerline_fonts = 0
@@ -129,8 +115,9 @@ autocmd User AirlineAfterInit call AirlineInit()
 let mapleader=","
 let maplocalleader="\\"
 
-" Find definition
-nnoremap <leader>d :CtrlPTag<CR>
+" vim-rooter
+
+let g:rooter_cd_cmd = 'lcd' " change root folder based on current window
 
 " Toggle paste mode
 noremap <leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
@@ -146,6 +133,18 @@ if has('nvim')
   nnoremap <Leader>ev :tabe ~/.config/nvim/init.vim<CR>
   " reload init.vim
   nnoremap <Leader>rv :so ~/.config/nvim/init.vim<CR>:echom 'init.vim reloaded'<CR>
+  " Find definition
+  nnoremap <leader>d :Telescope lsp_definitions<CR>
+  " Fuzzy find files
+  nnoremap <C-p> :Telescope find_files<CR>
+  " shortcut for project-wide search
+  nnoremap <leader>f :Telescope live_grep<CR>
+  " shortcut for project switching
+  nnoremap <leader><CR> :Telescope repo list<CR>
+  " git status
+  nnoremap <leader>gs :Telescope git_status<CR>
+  " Markdown preview
+  nnoremap <leader>md :Glow<CR>
 endif
 
 if !has('nvim')
@@ -157,9 +156,6 @@ endif
 
 " turn off search highlight
 nnoremap <leader>h :noh<CR>
-
-" shortcut for project-wide search
-nnoremap <leader>f :Ack!<SPACE>""<LEFT>
 
 " automatically rebalance windows on vim resize
 autocmd vimrc VimResized * :wincmd =
@@ -173,17 +169,10 @@ nnoremap <leader>gd :G diff<CR>
 " bind UP to :<UP>
 nnoremap <UP> :<UP>
 
-" Neomake stuff (Syntastic replacement)
-autocmd vimrc BufWritePost * Neomake
-
 autocmd vimrc FileType markdown setlocal wrap spell textwidth=0 nolist linebreak
 
 " autocomplete
 " Built-in, just use C-n/C-p
-
-let vim_markdown_preview_hotkey='<C-m>'
-let vim_markdown_preview_browser='firefox'
-let vim_markdown_preview_github=1
 
 " Syntax Highlighting help
 " Show syntax highlighting groups for word under cursor
@@ -283,5 +272,21 @@ if has('nvim')
       end, opts)
     end,
   })
+
+  require("telescope").setup {
+    extensions = {
+      repo = {
+        list = {
+          search_dirs = {
+            "~/projects"
+          }
+        }
+      }
+    }
+  }
+
+  require("telescope").load_extension "repo"
+
+  require("glow").setup()
 EOF
 endif
