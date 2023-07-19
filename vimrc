@@ -67,7 +67,7 @@ set timeoutlen=1000 ttimeoutlen=0
 set showcmd
 set noswapfile " no swap
 set background=dark
-colorscheme darcula
+colorscheme hybrid
 set noshowmode " don't show the mode as Airline is doing it
 set splitbelow " hsplit creates split below current
 set splitright " vsplit creates split to the right of current
@@ -102,7 +102,7 @@ noremap <C-n> :Vex<CR>
 let g:airline_powerline_fonts = 0
 let g:airline_symbols_ascii = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = 'bubblegum'
+let g:airline_theme = 'hybrid'
 let g:airline#extensions#ctrlp#show_adjacent_modes = 0
 function! AirlineInit()
   let g:airline_section_a = airline#section#create_left(['mode', 'crypt', 'paste', 'spell', 'iminsert'])
