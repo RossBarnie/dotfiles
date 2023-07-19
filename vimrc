@@ -233,6 +233,7 @@ if has('nvim')
       ['rust-analyzer'] = {},
     },
   }
+  lspconfig.quick_lint_js.setup {}
 
   -- Global mappings.
   -- See `:help vim.diagnostic.*` for documentation on any of the below functions
