@@ -74,7 +74,7 @@ set splitright " vsplit creates split to the right of current
 set shiftround " round indent to multiple of shiftwidth
 set nospell " disable spell check by default
 set mouse=a " enable mouse use, I like it for switching contexts (browser to terminal)
-set signcolumn=number " share "signs" (eg gitgutter) with the number column
+set signcolumn=yes " add signcolumn for git gutter and LSP
 set updatetime=100 " determines how soon git gutter will update after stopping typing, also swap file but we've disabled that anyway
 
 " reset vimrc autocommands
@@ -196,9 +196,8 @@ autocmd vimrc FileType ruby,eruby,yaml nnoremap <buffer> <localleader>c mmI#<SPA
 
 autocmd vimrc FileType ruby,eruby,yaml setlocal iskeyword+=?
 
-" Ruby interpreter
 if has('nvim')
-  let g:ruby_host_prog = 'rvm default do neovim-ruby-host'
+  let g:ruby_host_prog = 'rvm default do neovim-ruby-host' " ruby interpreter
 
   " fix clipboard in WSL
   lua << EOF
@@ -216,9 +215,9 @@ if has('nvim')
 
   -- Setup language servers.
   local lspconfig = require('lspconfig')
-  lspconfig.solargraph.setup{}
-  lspconfig.marksman.setup{}
-  lspconfig.yamlls.setup{
+  lspconfig.solargraph.setup{} -- ruby
+  lspconfig.marksman.setup{} -- markdown
+  lspconfig.yamlls.setup{ -- yaml
     settings = {
       yaml = {
         schemaStore = {
@@ -228,7 +227,7 @@ if has('nvim')
       },
     },
   }
-  lspconfig.rust_analyzer.setup {
+  lspconfig.rust_analyzer.setup { -- rust
     -- Server-specific settings. See `:help lspconfig-setup`
     settings = {
       ['rust-analyzer'] = {},
