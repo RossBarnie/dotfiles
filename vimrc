@@ -1,41 +1,42 @@
-if !has('nvim')
+if !has('nvim') " nvim is always nocompatible
   set nocompatible
 endif
 
 call plug#begin('~/.vim/bundle')
 
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'jistr/vim-nerdtree-tabs'
-Plug 'mileszs/ack.vim'
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-obsession'
+Plug 'vim-airline/vim-airline' " status line replacement
+Plug 'vim-airline/vim-airline-themes' " Themes for airline
+Plug 'mileszs/ack.vim' " Project search
+Plug 'ntpeters/vim-better-whitespace' " highlight trailing whitespace
+Plug 'tpope/vim-surround' " Add 'surround' commands, eg cs'
+Plug 'tpope/vim-fugitive' " Git in vim
+Plug 'tpope/vim-obsession' " sessions in vim
 if has('nvim')
-  Plug 'neomake/neomake'
+  Plug 'nvim-lua/plenary.nvim' " dependency of telescope
+  Plug 'nvim-telescope/telescope.nvim' " fuzzy finder framework, requires ripgrep
+  Plug 'cljoly/telescope-repo.nvim' " find git repos on local filesystem for quick switching
+  Plug 'airblade/vim-rooter' " change directory when opening files
+  Plug 'neovim/nvim-lspconfig' " language server protocol support
+  Plug 'b0o/schemastore.nvim' " json/yaml schemas
+  Plug 'ellisonleao/glow.nvim' " Render markdown using glow
 endif
-Plug 'fatih/vim-go', { 'for': 'go' }
-Plug 'JamshedVesuna/vim-markdown-preview'
-Plug 'tpope/vim-endwise'
-Plug 'airblade/vim-gitgutter'
-Plug 'sjl/gundo.vim'
-Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
-Plug 'w0ng/vim-hybrid'
-
+Plug 'tpope/vim-endwise' " automatically add 'end' to ruby blocks
+Plug 'airblade/vim-gitgutter' " git diff as signs in the sign column
+Plug 'sjl/gundo.vim' " Undo on steroids
+Plug 'w0ng/vim-hybrid' " hybrid colourscheme
+Plug 'doums/darcula' " darcula colourscheme
+Plug 'chr4/nginx.vim' " nginx file support
+Plug 'christoomey/vim-tmux-navigator' " tmux pane movement matches vim pane movement (C-h/j/k/l)
 call plug#end()
 
 filetype plugin indent on
 
 if !has('nvim')
-  set ttyfast " indicates fast terminal connection
+  set ttyfast " indicates fast terminal connection, not required for nvim
 endif
 set lazyredraw " screen not redrawn while executing macros
 set list " show invisibles
-set listchars+=eol:¬ " custom eol character
+set listchars=tab:>-,trail:-,nbsp:+,leadmultispace:· " show invisibles
 set number " show line numbers
 set laststatus=2 " always show status line
 set title " change title of terminal (if supported)
@@ -57,7 +58,7 @@ set undolevels=500
 set visualbell " use a visual bell, not a beep, on error
 set nobackup " don't keep backups of current file
 set wildmenu " enhanced tab completion for new files
-set colorcolumn=80
+set colorcolumn=135
 set autoread " automatically read files changed on disk
 set re=1 " use old regex engine, should help with ruby files being slow
 set cursorline! " highlight the current line of the cursor
@@ -68,12 +69,13 @@ set noswapfile " no swap
 set background=dark
 colorscheme hybrid
 set noshowmode " don't show the mode as Airline is doing it
-set splitbelow
-set splitright
+set splitbelow " hsplit creates split below current
+set splitright " vsplit creates split to the right of current
 set shiftround " round indent to multiple of shiftwidth
 set nospell " disable spell check by default
 set mouse=a " enable mouse use, I like it for switching contexts (browser to terminal)
-set signcolumn=yes
+set signcolumn=yes " add signcolumn for git gutter and LSP
+set updatetime=100 " determines how soon git gutter will update after stopping typing, also swap file but we've disabled that anyway
 
 " reset vimrc autocommands
 augroup vimrc
@@ -93,31 +95,14 @@ nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-  " highlight ag searches
-   let g:ackhighlight = 1
-
-  " use ag in CtrlP for listing files
-  let g:ctrlp_user_command = 'ag -p ~/.agignore %s -l --nocolor --nogroup --hidden -g ""'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
-let g:ctrlp_switch_buffer = 0
-
-" NERDTree
-" Toggle nerdtree with C-n
-noremap <C-n> :NERDTreeTabsToggle<CR>
-" current file in tree
-noremap <F9> :NERDTreeFind<CR>
+" Toggle file explorer with C-n
+noremap <C-n> :Vex<CR>
 
 " Airline
 let g:airline_powerline_fonts = 0
 let g:airline_symbols_ascii = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme = 'hybrid'
-let g:airline#extensions#branch#format = 1 " feature/foo becomes foo
 let g:airline#extensions#ctrlp#show_adjacent_modes = 0
 function! AirlineInit()
   let g:airline_section_a = airline#section#create_left(['mode', 'crypt', 'paste', 'spell', 'iminsert'])
@@ -130,8 +115,9 @@ autocmd User AirlineAfterInit call AirlineInit()
 let mapleader=","
 let maplocalleader="\\"
 
-" Find definition
-nnoremap <leader>d :CtrlPTag<CR>
+" vim-rooter
+
+let g:rooter_cd_cmd = 'lcd' " change root folder based on current window
 
 " Toggle paste mode
 noremap <leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
@@ -147,6 +133,18 @@ if has('nvim')
   nnoremap <Leader>ev :tabe ~/.config/nvim/init.vim<CR>
   " reload init.vim
   nnoremap <Leader>rv :so ~/.config/nvim/init.vim<CR>:echom 'init.vim reloaded'<CR>
+  " Find definition
+  nnoremap <leader>d :Telescope lsp_definitions<CR>
+  " Fuzzy find files
+  nnoremap <C-p> :Telescope find_files<CR>
+  " shortcut for project-wide search
+  nnoremap <leader>f :Telescope live_grep<CR>
+  " shortcut for project switching
+  nnoremap <leader><CR> :Telescope repo list<CR>
+  " git status
+  nnoremap <leader>gs :Telescope git_status<CR>
+  " Markdown preview
+  nnoremap <leader>md :Glow<CR>
 endif
 
 if !has('nvim')
@@ -158,9 +156,6 @@ endif
 
 " turn off search highlight
 nnoremap <leader>h :noh<CR>
-
-" shortcut for project-wide search
-nnoremap <leader>f :Ack!<SPACE>""<LEFT>
 
 " automatically rebalance windows on vim resize
 autocmd vimrc VimResized * :wincmd =
@@ -174,17 +169,10 @@ nnoremap <leader>gd :G diff<CR>
 " bind UP to :<UP>
 nnoremap <UP> :<UP>
 
-" Neomake stuff (Syntastic replacement)
-autocmd vimrc BufWritePost * Neomake
-
 autocmd vimrc FileType markdown setlocal wrap spell textwidth=0 nolist linebreak
 
 " autocomplete
 " Built-in, just use C-n/C-p
-
-let vim_markdown_preview_hotkey='<C-m>'
-let vim_markdown_preview_browser='firefox'
-let vim_markdown_preview_github=1
 
 " Syntax Highlighting help
 " Show syntax highlighting groups for word under cursor
@@ -208,10 +196,97 @@ autocmd vimrc FileType ruby,eruby,yaml nnoremap <buffer> <localleader>c mmI#<SPA
 
 autocmd vimrc FileType ruby,eruby,yaml setlocal iskeyword+=?
 
-" Ruby interpreter
-let g:ruby_host_prog = '~/.rbenv/versions/2.4.1/bin/neovim-ruby-host'
 if has('nvim')
-  call neomake#configure#automake('nrw', 750)
-  let g:neomake_list_height=5
-endif
+  let g:ruby_host_prog = 'rvm default do neovim-ruby-host' " ruby interpreter
 
+  " fix clipboard in WSL
+  lua << EOF
+  in_wsl = os.getenv('WSL_DISTRO_NAME') ~= nil
+  if in_wsl then
+    vim.g.clipboard = {
+      name = 'wsl clipboard',
+      copy =   { ["+"] = { "clip.exe" }, ["*"] = { "clip.exe" } },
+      paste =  { ["+"] = { "neovim_paste" }, ["*"] = { "neovim_paste" } },
+      cache_enabled = true
+    }
+  end
+
+  -- Configure LSP as omnifunc
+
+  -- Setup language servers.
+  local lspconfig = require('lspconfig')
+  lspconfig.solargraph.setup{} -- ruby
+  lspconfig.marksman.setup{} -- markdown
+  lspconfig.yamlls.setup{ -- yaml
+    settings = {
+      yaml = {
+        schemaStore = {
+          enable = false
+        },
+        schemas = require('schemastore').yaml.schemas(),
+      },
+    },
+  }
+  lspconfig.rust_analyzer.setup { -- rust
+    -- Server-specific settings. See `:help lspconfig-setup`
+    settings = {
+      ['rust-analyzer'] = {},
+    },
+  }
+  lspconfig.quick_lint_js.setup {}
+
+  -- Global mappings.
+  -- See `:help vim.diagnostic.*` for documentation on any of the below functions
+  vim.keymap.set('n', '<space>e', vim.diagnostic.open_float) -- might want to change this to (local) leader
+  vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+  vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+  vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
+
+  -- Use LspAttach autocommand to only map the following keys
+  -- after the language server attaches to the current buffer
+  vim.api.nvim_create_autocmd('LspAttach', {
+    group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+    callback = function(ev)
+      -- Enable completion triggered by <c-x><c-o>
+      vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+      -- Buffer local mappings.
+      -- See `:help vim.lsp.*` for documentation on any of the below functions
+      local opts = { buffer = ev.buf }
+      vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+      vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+      vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+      vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+      vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+      vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
+      vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
+      vim.keymap.set('n', '<space>wl', function()
+        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+      end, opts)
+      vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
+      vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
+      vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
+      vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+      vim.keymap.set('n', '<space>f', function()
+        vim.lsp.buf.format { async = true }
+      end, opts)
+    end,
+  })
+
+  require("telescope").setup {
+    extensions = {
+      repo = {
+        list = {
+          search_dirs = {
+            "~/projects"
+          }
+        }
+      }
+    }
+  }
+
+  require("telescope").load_extension "repo"
+
+  require("glow").setup()
+EOF
+endif
