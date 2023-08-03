@@ -24,6 +24,7 @@ if has('nvim')
   Plug 'neovim/nvim-lspconfig' " language server protocol support
   Plug 'b0o/schemastore.nvim' " json/yaml schemas
   Plug 'ellisonleao/glow.nvim' " Render markdown using glow
+  Plug 'lukas-reineke/indent-blankline.nvim' " indent guides
 endif
 Plug 'tpope/vim-endwise' " automatically add 'end' to ruby blocks
 Plug 'airblade/vim-gitgutter' " git diff as signs in the sign column
@@ -293,5 +294,7 @@ if has('nvim')
   require("telescope").load_extension "repo"
 
   require("glow").setup()
+
+  require("indent_blankline").setup {}
 EOF
 endif
