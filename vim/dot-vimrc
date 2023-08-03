@@ -69,7 +69,7 @@ set wildmenu " enhanced tab completion for new files
 set colorcolumn=135
 set autoread " automatically read files changed on disk
 set re=1 " use old regex engine, should help with ruby files being slow
-set cursorline! " highlight the current line of the cursor
+set cursorline " highlight the current line of the cursor
 set termguicolors
 set timeoutlen=1000 ttimeoutlen=0
 set showcmd
