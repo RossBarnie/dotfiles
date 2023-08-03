@@ -37,12 +37,14 @@ call plug#end()
 
 filetype plugin indent on
 
-if !has('nvim')
+if has('nvim')
+  set listchars=tab:>-,trail:-,nbsp:+,leadmultispace:· " show invisibles in neovim, fails in neovim < 0.9
+else
   set ttyfast " indicates fast terminal connection, not required for nvim
+  set listchars=tab:>-,trail:-,nbsp:+ " show invisibles (leadmultispace not supported in vim)
 endif
 set lazyredraw " screen not redrawn while executing macros
 set list " show invisibles
-set listchars=tab:>-,trail:-,nbsp:+,leadmultispace:· " show invisibles
 set number " show line numbers
 set laststatus=2 " always show status line
 set title " change title of terminal (if supported)
