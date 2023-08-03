@@ -8,7 +8,7 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-call plug#begin('~/.vim/bundle')
+call plug#begin(data_dir . '/bundle')
 
 Plug 'vim-airline/vim-airline' " status line replacement
 Plug 'vim-airline/vim-airline-themes' " Themes for airline
