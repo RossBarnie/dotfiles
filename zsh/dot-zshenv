@@ -3,4 +3,5 @@ export EDITOR=$VISUAL
 
 export PATH="$HOME/.bin:$HOME/.rbenv/bin:/usr/local/bin:$HOME/.rbenv/shims:$PATH"
 export XDG_CONFIG_HOME="$HOME"/.config
+export XDG_DATA_HOME="$HOME"/.local/share
 
