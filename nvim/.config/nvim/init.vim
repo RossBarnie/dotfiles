@@ -1,8 +1,4 @@
-if !has('nvim') " nvim is always nocompatible
-  set nocompatible
-endif
-
-let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+let data_dir = stdpath('data') . '/site'
 if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
@@ -14,22 +10,17 @@ Plug 'mileszs/ack.vim' " Project search
 Plug 'tpope/vim-surround' " Add 'surround' commands, eg cs'
 Plug 'tpope/vim-fugitive' " Git in vim
 Plug 'tpope/vim-obsession' " sessions in vim
-if has('nvim')
-  Plug 'nvim-lua/plenary.nvim' " dependency of telescope
-  Plug 'nvim-telescope/telescope.nvim' " fuzzy finder framework, requires ripgrep
-  Plug 'cljoly/telescope-repo.nvim' " find git repos on local filesystem for quick switching
-  Plug 'airblade/vim-rooter' " change directory when opening files
-  Plug 'neovim/nvim-lspconfig' " language server protocol support
-  Plug 'b0o/schemastore.nvim' " json/yaml schemas
-  Plug 'ellisonleao/glow.nvim' " Render markdown using glow
-  Plug 'lukas-reineke/indent-blankline.nvim' " indent guides
-  Plug 'AlexvZyl/nordic.nvim' " colorscheme
-  Plug 'nvim-lualine/lualine.nvim' " Faster Airline
-  Plug 'nvim-tree/nvim-tree.lua' " File explorer
-else
-  Plug 'vim-airline/vim-airline' " status line replacement
-  Plug 'vim-airline/vim-airline-themes' " Themes for airline
-endif
+Plug 'nvim-lua/plenary.nvim' " dependency of telescope
+Plug 'nvim-telescope/telescope.nvim' " fuzzy finder framework, requires ripgrep
+Plug 'cljoly/telescope-repo.nvim' " find git repos on local filesystem for quick switching
+Plug 'airblade/vim-rooter' " change directory when opening files
+Plug 'neovim/nvim-lspconfig' " language server protocol support
+Plug 'b0o/schemastore.nvim' " json/yaml schemas
+Plug 'ellisonleao/glow.nvim' " Render markdown using glow
+Plug 'lukas-reineke/indent-blankline.nvim' " indent guides
+Plug 'AlexvZyl/nordic.nvim' " colorscheme
+Plug 'nvim-lualine/lualine.nvim' " Faster Airline
+Plug 'nvim-tree/nvim-tree.lua' " File explorer
 Plug 'tpope/vim-endwise' " automatically add 'end' to ruby blocks
 Plug 'airblade/vim-gitgutter' " git diff as signs in the sign column
 Plug 'sjl/gundo.vim' " Undo on steroids
@@ -41,14 +32,8 @@ call plug#end()
 
 filetype plugin indent on
 
-if has('nvim')
-  set listchars=tab:>-,trail:-,nbsp:+,leadmultispace:· " show invisibles in neovim, fails in neovim < 0.9
-  colorscheme nordic
-else
-  set ttyfast " indicates fast terminal connection, not required for nvim
-  set listchars=tab:>-,trail:-,nbsp:+ " show invisibles (leadmultispace not supported in vim)
-  colorscheme hybrid
-endif
+set listchars=tab:>-,trail:-,nbsp:+,leadmultispace:· " show invisibles in neovim, fails in neovim < 0.9
+colorscheme nordic
 set lazyredraw " screen not redrawn while executing macros
 set list " show invisibles
 set number " show line numbers
@@ -111,20 +96,6 @@ nnoremap <Down> :echoe "Use j"<CR>
 " Toggle file explorer with C-n
 noremap <C-n> :NvimTreeToggle<CR>
 
-" Airline
-if !has('nvim')
-  let g:airline_powerline_fonts = 0
-  let g:airline_symbols_ascii = 1
-  let g:airline#extensions#tabline#enabled = 1
-  let g:airline#extensions#ctrlp#show_adjacent_modes = 0
-  function! AirlineInit()
-    let g:airline_section_a = airline#section#create_left(['mode', 'crypt', 'paste', 'spell', 'iminsert'])
-    let g:airline_section_b = airline#section#create(['hunks', 'branch'])
-    let g:airline_section_y = ''
-  endfunction
-  autocmd User AirlineAfterInit call AirlineInit()
-endif
-
 " set leader
 let mapleader=","
 let maplocalleader="\\"
@@ -142,31 +113,22 @@ nnoremap <silent> <Leader>w mm:%s/\s\+$//g<CR>:noh<CR>`m
 " indent whole file
 noremap <Leader>i mmgg=G`m<CR>
 
-if has('nvim')
-  " edit init.vim config
-  nnoremap <Leader>ev :tabe ~/.config/nvim/init.vim<CR>
-  " reload init.vim
-  nnoremap <Leader>rv :so ~/.config/nvim/init.vim<CR>:echom 'init.vim reloaded'<CR>
-  " Find definition
-  nnoremap <leader>d :Telescope lsp_definitions<CR>
-  " Fuzzy find files
-  nnoremap <C-p> :Telescope find_files<CR>
-  " shortcut for project-wide search
-  nnoremap <leader>f :Telescope live_grep<CR>
-  " shortcut for project switching
-  nnoremap <leader><CR> :Telescope repo list<CR>
-  " git status
-  nnoremap <leader>gs :Telescope git_status<CR>
-  " Markdown preview
-  nnoremap <leader>md :Glow<CR>
-endif
-
-if !has('nvim')
-  " edit vimrc
-  nnoremap <Leader>ev :tabe ~/.vimrc<CR>
-  " reload vimrc
-  nnoremap <Leader>rv :so ~/.vimrc<CR>:echom 'vimrc reloaded'<CR>
-endif
+" edit init.vim config
+nnoremap <Leader>ev :tabe ~/.config/nvim/init.vim<CR>
+" reload init.vim
+nnoremap <Leader>rv :so ~/.config/nvim/init.vim<CR>:echom 'init.vim reloaded'<CR>
+" Find definition
+nnoremap <leader>d :Telescope lsp_definitions<CR>
+" Fuzzy find files
+nnoremap <C-p> :Telescope find_files<CR>
+" shortcut for project-wide search
+nnoremap <leader>f :Telescope live_grep<CR>
+" shortcut for project switching
+nnoremap <leader><CR> :Telescope repo list<CR>
+" git status
+nnoremap <leader>gs :Telescope git_status<CR>
+" Markdown preview
+nnoremap <leader>md :Glow<CR>
 
 " turn off search highlight
 nnoremap <leader>h :noh<CR>
@@ -210,125 +172,123 @@ autocmd vimrc FileType ruby,eruby,yaml nnoremap <buffer> <localleader>c mmI#<SPA
 
 autocmd vimrc FileType ruby,eruby,yaml setlocal iskeyword+=?
 
-if has('nvim')
-  let g:ruby_host_prog = 'rvm default do neovim-ruby-host' " ruby interpreter
+let g:ruby_host_prog = 'rvm default do neovim-ruby-host' " ruby interpreter
 
-  " fix clipboard in WSL
-  lua << EOF
-  in_wsl = os.getenv('WSL_DISTRO_NAME') ~= nil
-  if in_wsl then
-    vim.g.clipboard = {
-      name = 'wsl clipboard',
-      copy =   { ["+"] = { "clip.exe" }, ["*"] = { "clip.exe" } },
-      paste =  { ["+"] = { "neovim_paste" }, ["*"] = { "neovim_paste" } },
-      cache_enabled = true
-    }
-  end
-
-  -- recommended by nvim-tree, disables netrw
-  vim.g.loaded_netrw = 1
-  vim.g.loaded_netrwPlugin = 1
-
-  require("nvim-tree").setup {
-    filters = {
-      dotfiles = true,
-    }
+" fix clipboard in WSL
+lua << EOF
+in_wsl = os.getenv('WSL_DISTRO_NAME') ~= nil
+if in_wsl then
+  vim.g.clipboard = {
+    name = 'wsl clipboard',
+    copy =   { ["+"] = { "clip.exe" }, ["*"] = { "clip.exe" } },
+    paste =  { ["+"] = { "neovim_paste" }, ["*"] = { "neovim_paste" } },
+    cache_enabled = true
   }
+end
 
-  -- Setup language servers.
-  local lspconfig = require('lspconfig')
-  lspconfig.solargraph.setup{} -- ruby
-  lspconfig.marksman.setup{} -- markdown
-  lspconfig.yamlls.setup{ -- yaml
-    settings = {
-      yaml = {
-        schemaStore = {
-          enable = false
-        },
-        schemas = require('schemastore').yaml.schemas(),
+-- recommended by nvim-tree, disables netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+require("nvim-tree").setup {
+  filters = {
+    dotfiles = true,
+  }
+}
+
+-- Setup language servers.
+local lspconfig = require('lspconfig')
+lspconfig.solargraph.setup{} -- ruby
+lspconfig.marksman.setup{} -- markdown
+lspconfig.yamlls.setup{ -- yaml
+  settings = {
+    yaml = {
+      schemaStore = {
+        enable = false
       },
+      schemas = require('schemastore').yaml.schemas(),
     },
+  },
+}
+lspconfig.rust_analyzer.setup { -- rust
+  -- Server-specific settings. See `:help lspconfig-setup`
+  settings = {
+    ['rust-analyzer'] = {},
+  },
+}
+lspconfig.quick_lint_js.setup {
+  handlers = {
+    ['textDocument/publishDiagnostics'] = vim.lsp.with(
+      vim.lsp.diagnostic.on_publish_diagnostics, {
+        update_in_insert = true
+      }
+    )
   }
-  lspconfig.rust_analyzer.setup { -- rust
-    -- Server-specific settings. See `:help lspconfig-setup`
-    settings = {
-      ['rust-analyzer'] = {},
-    },
-  }
-  lspconfig.quick_lint_js.setup {
-    handlers = {
-      ['textDocument/publishDiagnostics'] = vim.lsp.with(
-        vim.lsp.diagnostic.on_publish_diagnostics, {
-          update_in_insert = true
-        }
-      )
-    }
-  }
+}
 
-  -- Global mappings.
-  -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-  vim.keymap.set('n', '<space>e', vim.diagnostic.open_float) -- might want to change this to (local) leader
-  vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-  vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-  vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
+-- Global mappings.
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float) -- might want to change this to (local) leader
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
 
-  -- Use LspAttach autocommand to only map the following keys
-  -- after the language server attaches to the current buffer
-  vim.api.nvim_create_autocmd('LspAttach', {
-    group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-    callback = function(ev)
-      -- Enable completion triggered by <c-x><c-o>
-      vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+-- Use LspAttach autocommand to only map the following keys
+-- after the language server attaches to the current buffer
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
-      -- Buffer local mappings.
-      -- See `:help vim.lsp.*` for documentation on any of the below functions
-      local opts = { buffer = ev.buf }
-      vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-      vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-      vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-      vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-      vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-      vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
-      vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
-      vim.keymap.set('n', '<space>wl', function()
-        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-      end, opts)
-      vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
-      vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
-      vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
-      vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-      vim.keymap.set('n', '<space>f', function()
-        vim.lsp.buf.format { async = true }
-      end, opts)
-    end,
-  })
+    -- Buffer local mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    local opts = { buffer = ev.buf }
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
+    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
+    vim.keymap.set('n', '<space>wl', function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end, opts)
+    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
+    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
+    vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    vim.keymap.set('n', '<space>f', function()
+      vim.lsp.buf.format { async = true }
+    end, opts)
+  end,
+})
 
-  require("telescope").setup {
-    extensions = {
-      repo = {
-        list = {
-          search_dirs = {
-            "~/projects"
-          }
+require("telescope").setup {
+  extensions = {
+    repo = {
+      list = {
+        search_dirs = {
+          "~/projects"
         }
       }
     }
   }
+}
 
-  require("telescope").load_extension "repo"
+require("telescope").load_extension "repo"
 
-  require("glow").setup()
+require("glow").setup()
 
-  require("indent_blankline").setup {}
-  require("lualine").setup {
-    options = {
-      icons_enabled = false,
-      theme = 'nordic'
-    },
-    extensions = {
-      'fugitive'
-    }
+require("indent_blankline").setup {}
+require("lualine").setup {
+  options = {
+    icons_enabled = false,
+    theme = 'nordic'
+  },
+  extensions = {
+    'fugitive'
   }
+}
 
 EOF
-endif
