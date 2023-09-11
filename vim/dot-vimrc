@@ -10,8 +10,6 @@ endif
 
 call plug#begin(data_dir . '/bundle')
 
-Plug 'vim-airline/vim-airline' " status line replacement
-Plug 'vim-airline/vim-airline-themes' " Themes for airline
 Plug 'mileszs/ack.vim' " Project search
 Plug 'tpope/vim-surround' " Add 'surround' commands, eg cs'
 Plug 'tpope/vim-fugitive' " Git in vim
@@ -25,6 +23,12 @@ if has('nvim')
   Plug 'b0o/schemastore.nvim' " json/yaml schemas
   Plug 'ellisonleao/glow.nvim' " Render markdown using glow
   Plug 'lukas-reineke/indent-blankline.nvim' " indent guides
+  Plug 'AlexvZyl/nordic.nvim' " colorscheme
+  Plug 'nvim-lualine/lualine.nvim' " Faster Airline
+  Plug 'nvim-tree/nvim-tree.lua' " File explorer
+else
+  Plug 'vim-airline/vim-airline' " status line replacement
+  Plug 'vim-airline/vim-airline-themes' " Themes for airline
 endif
 Plug 'tpope/vim-endwise' " automatically add 'end' to ruby blocks
 Plug 'airblade/vim-gitgutter' " git diff as signs in the sign column
@@ -39,9 +43,11 @@ filetype plugin indent on
 
 if has('nvim')
   set listchars=tab:>-,trail:-,nbsp:+,leadmultispace:· " show invisibles in neovim, fails in neovim < 0.9
+  colorscheme nordic
 else
   set ttyfast " indicates fast terminal connection, not required for nvim
   set listchars=tab:>-,trail:-,nbsp:+ " show invisibles (leadmultispace not supported in vim)
+  colorscheme hybrid
 endif
 set lazyredraw " screen not redrawn while executing macros
 set list " show invisibles
@@ -75,7 +81,6 @@ set timeoutlen=1000 ttimeoutlen=0
 set showcmd
 set noswapfile " no swap
 set background=dark
-colorscheme hybrid
 set noshowmode " don't show the mode as Airline is doing it
 set splitbelow " hsplit creates split below current
 set splitright " vsplit creates split to the right of current
@@ -104,20 +109,21 @@ nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
 " Toggle file explorer with C-n
-noremap <C-n> :Vex<CR>
+noremap <C-n> :NvimTreeToggle<CR>
 
 " Airline
-let g:airline_powerline_fonts = 0
-let g:airline_symbols_ascii = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = 'hybrid'
-let g:airline#extensions#ctrlp#show_adjacent_modes = 0
-function! AirlineInit()
-  let g:airline_section_a = airline#section#create_left(['mode', 'crypt', 'paste', 'spell', 'iminsert'])
-  let g:airline_section_b = airline#section#create(['hunks', 'branch'])
-  let g:airline_section_y = ''
-endfunction
-autocmd User AirlineAfterInit call AirlineInit()
+if !has('nvim')
+  let g:airline_powerline_fonts = 0
+  let g:airline_symbols_ascii = 1
+  let g:airline#extensions#tabline#enabled = 1
+  let g:airline#extensions#ctrlp#show_adjacent_modes = 0
+  function! AirlineInit()
+    let g:airline_section_a = airline#section#create_left(['mode', 'crypt', 'paste', 'spell', 'iminsert'])
+    let g:airline_section_b = airline#section#create(['hunks', 'branch'])
+    let g:airline_section_y = ''
+  endfunction
+  autocmd User AirlineAfterInit call AirlineInit()
+endif
 
 " set leader
 let mapleader=","
@@ -219,7 +225,15 @@ if has('nvim')
     }
   end
 
-  -- Configure LSP as omnifunc
+  -- recommended by nvim-tree, disables netrw
+  vim.g.loaded_netrw = 1
+  vim.g.loaded_netrwPlugin = 1
+
+  require("nvim-tree").setup {
+    filters = {
+      dotfiles = true,
+    }
+  }
 
   -- Setup language servers.
   local lspconfig = require('lspconfig')
@@ -298,5 +312,15 @@ if has('nvim')
   require("glow").setup()
 
   require("indent_blankline").setup {}
+  require("lualine").setup {
+    options = {
+      icons_enabled = false,
+      theme = 'nordic'
+    },
+    extensions = {
+      'fugitive'
+    }
+  }
+
 EOF
 endif
