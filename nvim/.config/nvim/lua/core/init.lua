@@ -35,7 +35,6 @@ opt.backup = false -- don't keep backups of current file
 opt.wildmenu = true -- enhanced tab completion for new files
 opt.colorcolumn = "135"
 opt.autoread = true -- automatically read files changed on disk
-opt.re = 1 -- use old regex engine, should help with ruby files being slow
 opt.cursorline = true -- highlight the current line of the cursor
 opt.termguicolors = true
 opt.timeoutlen = 1000
