@@ -1,3 +1,7 @@
+local k = function(lhs, rhs)
+  vim.keymap.set('n', lhs, rhs)
+end
+
 return {
   {
     'williamboman/mason.nvim',
@@ -8,13 +12,12 @@ return {
   {
     'neovim/nvim-lspconfig',
     event = { 'BufEnter', 'BufNewFile' },
-    keys = {
-      { '<space>e', vim.diagnostic.open_float },
-      { '[d', vim.diagnostic.goto_prev },
-      { ']d', vim.diagnostic.goto_next },
-      { '<space>q', vim.diagnostic.setloclist },
-    },
     config = function()
+      k('<space>e', vim.diagnostic.open_float)
+      k('[d', vim.diagnostic.goto_prev)
+      k(']d', vim.diagnostic.goto_next)
+      k('<space>q', vim.diagnostic.setloclist)
+
       local lsp = require('lspconfig')
       lsp.rust_analyzer.setup {
         settings = {
