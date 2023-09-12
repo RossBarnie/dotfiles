@@ -3,18 +3,7 @@ return {
   config = function ()
     vim.g.loaded_netrw = 1
     vim.g.loaded_netrwPlugin = 1
-    require("nvim-tree").setup {
-      renderer = {
-        icons = {
-          show = {
-            file = false,
-            folder = false,
-            folder_arrow = false,
-            git = false
-          }
-        }
-      }
-    }
+    require("nvim-tree").setup {}
   end,
   keys = {
     { '<C-n>', ':NvimTreeToggle<CR>' }
