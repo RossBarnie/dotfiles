@@ -7,6 +7,7 @@ return {
   },
   {
     'neovim/nvim-lspconfig',
+    event = { 'BufEnter', 'BufNewFile' },
     keys = {
       { '<space>e', vim.diagnostic.open_float },
       { '[d', vim.diagnostic.goto_prev },
