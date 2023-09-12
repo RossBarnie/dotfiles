@@ -6,9 +6,9 @@ return {
         icons_enabled = false,
         theme = 'nordic'
       },
-      -- extensions = {
-      --   'fugitive'
-      -- }
+      extensions = {
+        'fugitive'
+      }
     }
   end
 }
