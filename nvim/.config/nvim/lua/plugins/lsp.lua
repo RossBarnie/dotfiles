@@ -22,6 +22,7 @@ return {
         }
       }
       lsp.quick_lint_js.setup {
+        filetypes = { 'javascript', 'javascriptreact' },
         handlers = {
           ['textDocument/publishDiagnostics'] = vim.lsp.with(
             vim.lsp.diagnostic.on_publish_diagnostics, {
