@@ -57,6 +57,18 @@ opt.sidescrolloff = 8
 require("core.mappings")
 require("core.autocmds")
 
+-- clipboad fix --
+
+local in_wsl = os.getenv('WSL_DISTRO_NAME') ~= nil
+if in_wsl then
+  g.clipboard = {
+    name = 'wsl clipboard',
+    copy =   { ["+"] = { "clip.exe" }, ["*"] = { "clip.exe" } },
+    paste =  { ["+"] = { "neovim_paste" }, ["*"] = { "neovim_paste" } },
+    cache_enabled = true
+  }
+end
+
 -- plugins --
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -78,3 +90,4 @@ require("lazy").setup("plugins", { root = vim.fn.stdpath("data") .. "/site" })
 vim.cmd.filetype("plugin indent on")
 vim.cmd.colorscheme("nordic")
 vim.cmd.syntax("on")
+g.ruby_host_prog = 'rvm default do neovim-ruby-host' -- ruby interpreter

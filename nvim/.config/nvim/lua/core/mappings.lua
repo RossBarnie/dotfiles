@@ -22,3 +22,5 @@ k.set('n', '<Leader>rv', ':so ~/.config/nvim/init.lua<CR>:echom \'init.lua reloa
 
 -- remove highlights
 k.set('n', '<Leader>h', ':noh<CR>')
+
+k.set('n', '<UP>', ':<UP>')
