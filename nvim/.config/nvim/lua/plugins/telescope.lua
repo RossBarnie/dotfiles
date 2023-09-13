@@ -1,13 +1,15 @@
-local k = vim.keymap
-k.set('n', '<Leader><CR>', ':Telescope repo list<CR>')
-k.set('n', '<Leader>d', ':Telescope lsp_definitions<CR>')
-k.set('n', '<Leader>f', ':Telescope live_grep<CR>')
-k.set('n', '<Leader>gs', ':Telescope git_status<CR>')
-k.set('n', '<C-p>', ':Telescope find_files<CR>')
+local k = function(lhs,rhs)
+  vim.keymap.set('n', lhs, rhs)
+end
 return {
   'nvim-telescope/telescope.nvim',
   config = function()
     local telescope = require("telescope")
+    k('<Leader><CR>', ':Telescope repo list<CR>')
+    k('<Leader>d', ':Telescope lsp_definitions<CR>')
+    k('<Leader>f', ':Telescope live_grep<CR>')
+    k('<Leader>gs', ':Telescope git_status<CR>')
+    k('<C-p>', ':Telescope find_files<CR>')
     telescope.setup {
       extensions = {
         repo = {
