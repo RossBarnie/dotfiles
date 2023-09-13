@@ -3,12 +3,7 @@ local k = function(lhs, rhs)
 end
 
 return {
-  {
-    'williamboman/mason.nvim',
-    config = function()
-      require('mason').setup{}
-    end
-  },
+  'williamboman/mason.nvim',
   {
     'neovim/nvim-lspconfig',
     event = { 'BufEnter', 'BufNewFile' },
