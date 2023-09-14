@@ -9,11 +9,3 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     vim.o.linebreak = true
   end
 })
--- Add `?` to "words" for movement in ruby
-vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = "ruby",
-  callback = function ()
-    vim.o.iskeyword:append('?')
-  end
-})
-
