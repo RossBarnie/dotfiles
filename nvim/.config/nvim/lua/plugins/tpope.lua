@@ -8,10 +8,10 @@ return {
   {
     'tpope/vim-fugitive', -- Git in vim
     config = function()
-      k('<leader>gis', ':G status<CR>')
-      k('<leader>gic', ':G commit<CR>')
-      k('<leader>gib', ':G blame<CR>')
-      k('<leader>gid', ':Gdiffsplit!<CR>')
+      k('<leader>gs', ':G<CR>')
+      k('<leader>gc', ':G commit<CR>')
+      k('<leader>gb', ':G blame<CR>')
+      k('<leader>gd', ':Gdiffsplit!<CR>')
     end
   },
 }
