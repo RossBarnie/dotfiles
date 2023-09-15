@@ -11,6 +11,22 @@ return {
     k('<Leader>gs', ':Telescope git_status<CR>')
     k('<C-p>', ':Telescope find_files<CR>')
     telescope.setup {
+      opts = {
+        defaults = {
+          file_ignore_patterns = { 'node_modules', '.git' }
+        }
+      },
+      pickers = {
+        find_files = {
+          hidden = true
+        },
+        live_grep = {
+          glob_pattern = '!.git/',
+          additional_args = function()
+            return { "--hidden" }
+          end
+        },
+      },
       extensions = {
         repo = {
           list = {
