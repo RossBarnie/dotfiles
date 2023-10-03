@@ -19,7 +19,7 @@ return {
           }
         }
       }
-      k('<C-n>', ':Neotree toggle<CR>')
+      k('<C-n>', ':Neotree reveal<CR>')
     end
   }
 }
