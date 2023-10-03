@@ -8,7 +8,6 @@ return {
     k('<Leader><CR>', ':Telescope repo list<CR>')
     k('<Leader>d', ':Telescope lsp_definitions<CR>')
     k('<Leader>f', ':Telescope live_grep<CR>')
-    k('<Leader>gs', ':Telescope git_status<CR>')
     k('<C-p>', ':Telescope find_files<CR>')
     telescope.setup {
       opts = {
