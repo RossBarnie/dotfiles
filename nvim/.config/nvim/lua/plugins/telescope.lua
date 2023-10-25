@@ -10,6 +10,9 @@ return {
     k('<Leader>f', ':Telescope live_grep<CR>')
     k('<C-p>', ':Telescope find_files<CR>')
     telescope.setup {
+      defaults = {
+        layout_strategy = 'vertical'
+      },
       opts = {
         defaults = {
           file_ignore_patterns = { 'node_modules', '.git' }
