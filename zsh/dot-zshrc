@@ -121,6 +121,13 @@ fi
 
 export PATH="$PATH:$HOME/neovim/bin"
 
+WSL=$(which powershell.exe)
+
+if [[ -n $WSL ]]; then
+  export BROWSER="powershell.exe /C start"
+fi
+
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
