@@ -12,7 +12,7 @@ opt.listchars = { -- show invisibles
   leadmultispace = "·"
 }
 opt.lazyredraw = true -- screen not redrawn while executing macros
-opt.list = true -- show invisibles
+opt.list = false -- show invisibles
 opt.number = true -- show line numbers
 opt.laststatus = 3 -- always show status line
 opt.title = true -- change title of terminal (if supported)
