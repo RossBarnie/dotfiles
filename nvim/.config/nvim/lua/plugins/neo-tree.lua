@@ -4,6 +4,14 @@ end
 
 return {
   {
+    "nvim-tree/nvim-web-devicons",
+    config = function()
+      local nwd = require("nvim-web-devicons")
+      nwd.setup {}
+      nwd.set_default_icon("", "#6d8086", 66)
+    end
+  },
+  {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
     dependencies = {
