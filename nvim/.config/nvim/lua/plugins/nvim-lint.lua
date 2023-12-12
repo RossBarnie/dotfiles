@@ -6,7 +6,8 @@ return {
       events = { "BufWritePost", "BufReadPost", "InsertLeave" },
       linters_by_ft = {
         dockerfile = { "hadolint", },
-        sh = { "shellcheck", }
+        sh = { "shellcheck", },
+        python = { "pylint", }
         -- fish = { "fish" },
         -- Use the "*" filetype to run linters on all filetypes.
         -- ['*'] = { 'global linter' },
