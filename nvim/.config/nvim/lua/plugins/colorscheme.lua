@@ -1,10 +1,19 @@
 return {
   {
     'AlexvZyl/nordic.nvim',
-    lazy = true
+    lazy = false,
+    config = function()
+      local palette = require('nordic.colors')
+      require('nordic').setup {
+        override = {
+          NeoTreeGitUntracked = { fg = palette.magenta.dim },
+        }
+      }
+    end
   },
   {
     'w0ng/vim-hybrid',
-    lazy = true
+    lazy = false
   },
+  'nordtheme/vim',
 }
