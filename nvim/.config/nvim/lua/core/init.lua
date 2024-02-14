@@ -83,11 +83,19 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
-require("lazy").setup("plugins", { root = vim.fn.stdpath("data") .. "/site" })
+require("lazy").setup("plugins", { root = vim.fn.stdpath("data") .. "/lazy" })
 
 -- post-plugin config --
 
 vim.cmd.filetype("plugin indent on")
 vim.cmd.colorscheme("nordic")
 vim.cmd.syntax("on")
-g.ruby_host_prog = 'rvm default do neovim-ruby-host' -- ruby interpreter
+vim.diagnostic.config(
+  {
+    virtual_text = false,
+    signs = true,
+    underline = true,
+    severity_sort = true
+  }
+)
+-- g.ruby_host_prog = 'rvm default do neovim-ruby-host' -- ruby interpreter
