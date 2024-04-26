@@ -18,15 +18,15 @@ return {
       },
       opts = {
         defaults = {
-          file_ignore_patterns = { 'node_modules', '.git' }
+          file_ignore_patterns = { '^node_modules/*', '^.git/*' }
         }
       },
       pickers = {
         find_files = {
-          hidden = true
+          no_ignore = true
         },
         live_grep = {
-          glob_pattern = '!.git/',
+          glob_pattern = '!.git/*',
           additional_args = function()
             return { "--hidden" }
           end
