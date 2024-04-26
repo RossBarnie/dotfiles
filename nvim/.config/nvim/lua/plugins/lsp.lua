@@ -16,12 +16,18 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     config = function()
       local lsp = require('lspconfig')
+      local capabilities = vim.tbl_deep_extend("force",
+        vim.lsp.protocol.make_client_capabilities(),
+        require('cmp_nvim_lsp').default_capabilities()
+      )
       lsp.rust_analyzer.setup {
+        capabilities = capabilities,
         settings = {
           ['rust-analyzer'] = {},
         }
       }
       lsp.eslint.setup {
+        capabilities = capabilities,
         on_attach = function(_, bufnr)
           vim.api.nvim_create_autocmd("BufWritePre", {
             buffer = bufnr,
@@ -29,9 +35,17 @@ return {
           })
         end,
       }
-      lsp.solargraph.setup {}
-      lsp.marksman.setup {}
+      lsp.solargraph.setup {
+        capabilities = capabilities,
+      }
+      lsp.ruby_lsp.setup {
+        capabilities = capabilities,
+      }
+      lsp.marksman.setup {
+        capabilities = capabilities,
+      }
       lsp.yamlls.setup {
+        capabilities = capabilities,
         settings = {
           yaml = {
             schemastore = {
@@ -45,6 +59,7 @@ return {
         root_dir = vim.lsp.util.find_git_ancestor
       }
       lsp.lua_ls.setup {
+        capabilities = capabilities,
         on_init = function(client)
           local path = client.workspace_folders[1].name
           if not vim.loop.fs_stat(path..'/.luarc.json') and not vim.loop.fs_stat(path..'/.luarc.jsonc') then
