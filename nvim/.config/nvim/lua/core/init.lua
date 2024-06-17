@@ -88,7 +88,6 @@ require("lazy").setup("plugins", { root = vim.fn.stdpath("data") .. "/lazy" })
 -- post-plugin config --
 
 vim.cmd.filetype("plugin indent on")
-vim.cmd.colorscheme("nordic")
 vim.cmd.syntax("on")
 vim.diagnostic.config(
   {

@@ -2,13 +2,14 @@ return {
   {
     'AlexvZyl/nordic.nvim',
     lazy = false,
+    priority = 1000,
+    branch = "dev",
     config = function()
-      local palette = require('nordic.colors')
-      require('nordic').setup {
-        override = {
-          NeoTreeGitUntracked = { fg = palette.magenta.dim },
-        }
-      }
+      require('nordic').load({
+        on_highlight = function(highlights, palette)
+          highlights.NeoTreeGitUntracked = { fg = palette.magenta.dim }
+        end
+      })
     end
   },
   {

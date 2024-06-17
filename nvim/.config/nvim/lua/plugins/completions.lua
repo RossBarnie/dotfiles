@@ -11,14 +11,6 @@ return {
     config = function()
       local cmp = require('cmp')
       cmp.setup({
-        window = {
-          completion = {
-            winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
-          },
-          documentation = {
-            winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
-          },
-        },
         mapping = {
           ['<CR>'] = cmp.mapping.confirm({ select = false }),
           ['<Tab>'] = cmp.mapping(function(fallback)
