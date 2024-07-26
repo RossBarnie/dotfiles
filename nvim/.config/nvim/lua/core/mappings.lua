@@ -24,3 +24,7 @@ k.set('n', '<Leader>rv', ':so ~/.config/nvim/init.lua<CR>:echom \'init.lua reloa
 k.set('n', '<Leader>h', ':noh<CR>')
 
 k.set('n', '<UP>', ':<UP>')
+
+-- manage diffs
+k.set('n', '<Leader>dt', ':diffthis<CR>')
+k.set('n', '<Leader>do', ':diffoff!<CR>')
