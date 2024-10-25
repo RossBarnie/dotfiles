@@ -3,7 +3,7 @@ return {
     'AlexvZyl/nordic.nvim',
     lazy = false,
     priority = 1000,
-    branch = "dev",
+    branch = "main",
     config = function()
       require('nordic').load({
         on_highlight = function(highlights, palette)
