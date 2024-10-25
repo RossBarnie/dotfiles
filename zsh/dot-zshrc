@@ -140,6 +140,9 @@ export NVM_DIR="$HOME/.nvm"
 if [[ -x $(which zoxide) ]]; then
   eval "$(zoxide init zsh)"
 fi
+
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$HOME/.rvm/bin:$PATH"
 
