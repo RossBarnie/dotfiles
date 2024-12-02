@@ -4,7 +4,7 @@ export EDITOR=$VISUAL
 export PATH="$HOME/.bin:$HOME/.rbenv/bin:/usr/local/bin:$HOME/.rbenv/shims:$PATH"
 export XDG_CONFIG_HOME="$HOME"/.config
 export XDG_DATA_HOME="$HOME"/.local/share
-export RIPGREP_CONFIG_PATH=${XDG_CONFIG_HOME}/rg
+export RIPGREP_CONFIG_PATH=${XDG_CONFIG_HOME}/rg/.ripgreprc
 
 if [[ -f "$HOME/.cargo/env" ]]; then
   . "$HOME/.cargo/env"

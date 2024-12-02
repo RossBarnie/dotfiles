@@ -16,25 +16,14 @@ return {
       defaults = {
         layout_strategy = 'vertical'
       },
-      opts = {
-        defaults = {
-          file_ignore_patterns = { '^node_modules/*', '^.git/*' }
-        }
-      },
-      pickers = {
-        find_files = {
-          no_ignore = true
-        },
-        live_grep = {
-          glob_pattern = '!.git/*',
-          additional_args = function()
-            return { "--hidden" }
-          end
-        },
+      find_files = {
+        hidden = true,
       },
     }
+    telescope.load_extension('fzf')
   end,
   dependencies = {
     'nvim-lua/plenary.nvim',
+    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
   },
 }
