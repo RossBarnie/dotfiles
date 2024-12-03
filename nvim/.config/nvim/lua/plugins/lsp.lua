@@ -94,6 +94,12 @@ return {
           return true
         end
       }
+      lsp.bashls.setup {
+        capabilities = capabilities,
+      }
+      lsp.ts_ls.setup {
+        capabilities = capabilities
+      }
       -- See `:help vim.diagnostic.*` for documentation on any of the below functions
       k('<space>e', vim.diagnostic.open_float)
       k('[d', vim.diagnostic.goto_prev)
