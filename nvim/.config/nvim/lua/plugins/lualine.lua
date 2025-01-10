@@ -15,9 +15,18 @@ return {
         sections = {
           lualine_c = { require('lsp-progress').progress }
         },
+        winbar = {
+          lualine_a = { 'tabs' },
+          lualine_b = { 'filename' }
+        },
+        inactive_winbar = {
+          lualine_a = { 'tabs' },
+          lualine_b = { 'filename' }
+        },
         options = {
           icons_enabled = false,
-          theme = 'nordic'
+          theme = 'nordic',
+          always_show_tabline = true
         },
         extensions = {
           'fugitive'
