@@ -61,7 +61,10 @@ return {
         }
       }
       lsp.jedi_language_server.setup{
-        root_dir = vim.lsp.util.find_git_ancestor
+        capabilities = capabilities,
+        root_dir = function (startpath)
+          vim.fs.dirname(vim.fs.find('.git', { path = startpath, upward = true })[1])
+        end
       }
       lsp.lua_ls.setup {
         capabilities = capabilities,
