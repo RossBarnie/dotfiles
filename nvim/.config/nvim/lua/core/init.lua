@@ -97,4 +97,17 @@ vim.diagnostic.config(
     severity_sort = true
   }
 )
+
+local signs = {
+  Error = "",
+  Warn = "",
+  Hint = "",
+  Info = "",
+}
+
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
 -- g.ruby_host_prog = 'rvm default do neovim-ruby-host' -- ruby interpreter
