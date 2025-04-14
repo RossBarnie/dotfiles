@@ -3,3 +3,7 @@ vim.api.nvim_create_autocmd({"VimResized"}, {
   pattern = { "*" },
   command = ":wincmd =",
 })
+vim.api.nvim_create_autocmd({"BufWritePre"}, {
+  pattern = { "*" },
+  callback = vim.lsp.buf.format,
+})
