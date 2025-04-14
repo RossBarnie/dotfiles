@@ -52,6 +52,7 @@ opt.signcolumn = "yes" -- add signcolumn for git gutter and LSP
 opt.updatetime = 100 -- determines how soon git gutter will update after stopping typing, also swap file but we've disabled that anyway
 opt.scrolloff = 4
 opt.sidescrolloff = 8
+opt.autoread = true
 
 -- mappings --
 require("core.mappings")
