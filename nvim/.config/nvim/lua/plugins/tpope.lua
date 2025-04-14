@@ -12,6 +12,10 @@ return {
       k('<leader>gc', ':G commit<CR>')
       k('<leader>gb', ':G blame<CR>')
       k('<leader>gd', ':Gdiffsplit!<CR>')
+      vim.api.nvim_create_autocmd({"BufReadPost"}, {
+        pattern = { "fugitive://*" },
+        command = "set bufhidden=delete",
+      }) -- automatically close fugitive buffers when they are hidden
     end
   },
 }
