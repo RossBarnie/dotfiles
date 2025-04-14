@@ -14,6 +14,9 @@ return {
   {
     'neovim/nvim-lspconfig',
     event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+      'b0o/schemastore.nvim'
+    },
     version = '1.8.x', -- See https://github.com/neovim/nvim-lspconfig/issues/3693, Neovim 0.10 required
     config = function()
       local lsp = require('lspconfig')
@@ -103,6 +106,21 @@ return {
       }
       lsp.ts_ls.setup {
         capabilities = capabilities
+      }
+      lsp.ruff.setup {
+        capabilities = capabilities
+      }
+      lsp.gopls.setup {
+        capabilities = capabilities
+      }
+      lsp.jsonls.setup {
+        capabilities = capabilities,
+        settings = {
+          json = {
+            schemas = require('schemastore').json.schemas(),
+            validate = { enable = true },
+          }
+        }
       }
       -- See `:help vim.diagnostic.*` for documentation on any of the below functions
       k('<space>e', vim.diagnostic.open_float)
