@@ -19,6 +19,6 @@ return {
   },
   keys = {
     { "<leader>nj", "<cmd>Neorg journal today<cr>", desc = "[N]eorg [j]ournal" },
-    { "<leader>nn", "<cmd>Neorg index<cr>", desc = "Open [N]eorg [n]otes" },
+    { "<leader>nn", "<cmd>Neorg index<cr>",         desc = "Open [N]eorg [n]otes" },
   }
 }
