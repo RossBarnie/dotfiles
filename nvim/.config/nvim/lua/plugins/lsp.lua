@@ -17,7 +17,7 @@ return {
     dependencies = {
       'b0o/schemastore.nvim'
     },
-    version = '1.8.x', -- See https://github.com/neovim/nvim-lspconfig/issues/3693, Neovim 0.10 required
+    version = '*',
     config = function()
       local lsp = require('lspconfig')
       local capabilities = vim.tbl_deep_extend("force",
