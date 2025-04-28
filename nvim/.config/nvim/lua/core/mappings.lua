@@ -28,3 +28,9 @@ k.set('n', '<UP>', ':<UP>')
 -- manage diffs
 k.set('n', '<Leader>dt', ':diffthis<CR>')
 k.set('n', '<Leader>do', ':diffoff!<CR>')
+
+-- manage locallist
+k.set('n', '<Leader>lo', ':lopen<CR>')
+k.set('n', ']l', ':lnext<CR>')
+k.set('n', '[l', ':lprev<CR>')
+k.set('n', '<Leader>lq', ':lclose<CR>')
