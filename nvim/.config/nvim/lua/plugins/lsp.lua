@@ -92,14 +92,22 @@ return {
                   }
                   -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
                   -- library = vim.api.nvim_get_runtime_file("", true)
-                }
+                },
               }
             })
-
             client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
           end
           return true
-        end
+        end,
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = {
+                'vim'
+              }
+            }
+          }
+        }
       }
       lsp.bashls.setup {
         capabilities = capabilities,
@@ -123,10 +131,7 @@ return {
         }
       }
       -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-      k('<space>e', vim.diagnostic.open_float)
-      k('[d', vim.diagnostic.goto_prev)
-      k(']d', vim.diagnostic.goto_next)
-      k('<space>q', vim.diagnostic.setloclist)
+      k('<leader>dl', vim.diagnostic.setloclist) -- "[d]iagnostic [l]ocallist"
 
       -- Use LspAttach autocommand to only map the following keys
       -- after the language server attaches to the current buffer
