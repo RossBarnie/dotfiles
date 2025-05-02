@@ -17,11 +17,11 @@ return {
         },
         winbar = {
           lualine_a = { 'tabs' },
-          lualine_b = { 'filename' }
+          lualine_b = { { 'filename', path = 1 } }
         },
         inactive_winbar = {
           lualine_a = { 'tabs' },
-          lualine_b = { 'filename' }
+          lualine_b = { { 'filename', path = 1 } }
         },
         options = {
           icons_enabled = false,
