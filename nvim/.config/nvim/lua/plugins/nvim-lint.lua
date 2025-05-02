@@ -7,7 +7,9 @@ return {
       linters_by_ft = {
         dockerfile = { "hadolint", },
         sh = { "shellcheck", },
-        python = { "pylint", }
+        python = { "pylint", },
+        json = { "redocly", },
+        lua = { "luacheck", },
         -- fish = { "fish" },
         -- Use the "*" filetype to run linters on all filetypes.
         -- ['*'] = { 'global linter' },
