@@ -12,6 +12,7 @@ return {
     k('<Leader>ff', ':Telescope find_files<CR>') -- find files
     k('<Leader>fh', ':Telescope help_tags<CR>') -- find help (vim)
     k('<Leader>fm', ':Telescope man_pages<CR>') -- find help (man)
+    k('<Leader>fj', ':Telescope jsonfly<CR>') -- find json key
     telescope.setup {
       defaults = {
         layout_strategy = 'vertical'
@@ -24,6 +25,7 @@ return {
   end,
   dependencies = {
     'nvim-lua/plenary.nvim',
-    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
+    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+    'Myzel394/jsonfly.nvim',
   },
 }
