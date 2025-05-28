@@ -4,7 +4,8 @@ end
 
 return {
   {
-    'williamboman/mason.nvim',
+    'mason-org/mason.nvim',
+    version = '*',
     config = function()
       require('mason').setup {
         PATH = 'append'
@@ -26,9 +27,6 @@ return {
       )
       lsp.rust_analyzer.setup {
         capabilities = capabilities,
-        settings = {
-          ['rust-analyzer'] = {},
-        }
       }
       lsp.eslint.setup {
         capabilities = capabilities,
