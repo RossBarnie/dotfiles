@@ -93,7 +93,9 @@ vim.cmd.syntax("on")
 
 vim.diagnostic.config(
   {
-    virtual_text = false,
+    virtual_text = {
+      spacing = 4,
+    },
     underline = true,
     severity_sort = true,
     signs = {
