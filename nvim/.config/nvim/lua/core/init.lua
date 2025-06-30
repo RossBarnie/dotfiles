@@ -90,25 +90,22 @@ require("lazy").setup("plugins", { root = vim.fn.stdpath("data") .. "/lazy" })
 
 vim.cmd.filetype("plugin indent on")
 vim.cmd.syntax("on")
+
 vim.diagnostic.config(
   {
     virtual_text = false,
-    signs = true,
     underline = true,
-    severity_sort = true
+    severity_sort = true,
+    signs = {
+      text = {
+        [vim.diagnostic.severity.ERROR] = "",
+        [vim.diagnostic.severity.WARN] = "",
+        [vim.diagnostic.severity.HINT] = "",
+        [vim.diagnostic.severity.INFO] = ""
+      }
+    }
   }
 )
 
-local signs = {
-  Error = "",
-  Warn = "",
-  Hint = "",
-  Info = "",
-}
-
-for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
 
 -- g.ruby_host_prog = 'rvm default do neovim-ruby-host' -- ruby interpreter
