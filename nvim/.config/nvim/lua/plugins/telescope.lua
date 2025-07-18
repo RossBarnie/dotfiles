@@ -8,6 +8,7 @@ return {
     k('<Leader>fp', ':Telescope repo list<CR>') -- find project
     k('<Leader>fd', ':Telescope lsp_definitions<CR>') -- find definition
     k('<Leader>fs', ':Telescope live_grep<CR>') -- find string
+    k('<Leader>fw', ":lua require('telescope.builtin').grep_string { search = vim.fn.expand('<cword>') }<CR>") -- find word under cursor
     k('<Leader>fb', ':Telescope buffers<CR>') -- find buffer
     k('<Leader>ff', ':Telescope find_files<CR>') -- find files
     k('<Leader>fh', ':Telescope help_tags<CR>') -- find help (vim)
