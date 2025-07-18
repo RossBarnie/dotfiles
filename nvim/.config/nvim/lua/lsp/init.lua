@@ -24,7 +24,7 @@ function M.setup()
     jsonls = require('lsp.jsonls'),
     lua_ls = require('lsp.lua_ls'),
     marksman = {},
-    ruby_lsp = {},
+    -- ruby_lsp = {},
     ruff = {},
     rust_analyzer = {},
     solargraph = {},
