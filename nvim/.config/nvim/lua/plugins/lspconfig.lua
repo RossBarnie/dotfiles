@@ -12,8 +12,10 @@ return {
     'neovim/nvim-lspconfig',
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-      'b0o/schemastore.nvim'
+      'b0o/schemastore.nvim',
+      'hrsh7th/nvim-cmp',
     },
-    version = '*'
+    version = '*',
+    config = require('lsp').setup
   }
 }

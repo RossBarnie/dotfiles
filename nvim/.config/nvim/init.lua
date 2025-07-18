@@ -1,2 +1,2 @@
 require "core"
-require "configuration"
+require "lazyconfig"
