@@ -26,3 +26,6 @@ k.set('n', '<UP>', ':<UP>')
 -- manage diffs
 k.set('n', '<Leader>dt', ':diffthis<CR>')
 k.set('n', '<Leader>do', ':diffoff!<CR>')
+
+-- Terminal mode
+k.set('t', '<ESC>', '<C-\\><C-n>')
