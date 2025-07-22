@@ -12,6 +12,8 @@ return {
       k('<leader>gc', ':G commit<CR>')
       k('<leader>gb', ':G blame<CR>')
       k('<leader>gd', ':Gdiffsplit!<CR>')
+      k('<leader>gp', ':G push') -- no <CR> as a "confirm"
+      k('<leader>gl', ':G pull')
       vim.api.nvim_create_autocmd({"BufReadPost"}, {
         pattern = { "fugitive://*" },
         command = "set bufhidden=delete",
