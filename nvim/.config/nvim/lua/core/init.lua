@@ -12,7 +12,7 @@ opt.listchars = { -- show invisibles
   leadmultispace = "·"
 }
 opt.lazyredraw = true -- screen not redrawn while executing macros
-opt.list = false -- show invisibles
+opt.list = false -- hide invisibles
 opt.number = true -- show line numbers
 opt.laststatus = 3 -- always show status line
 opt.title = true -- change title of terminal (if supported)
@@ -33,13 +33,13 @@ opt.undolevels = 500
 opt.visualbell = true -- use a visual bell, not a beep, on error
 opt.backup = false -- don't keep backups of current file
 opt.wildmenu = true -- enhanced tab completion for new files
-opt.colorcolumn = "135"
+opt.colorcolumn = "135" -- show a block of colour at column 135 to indicate a line being too long
 opt.autoread = true -- automatically read files changed on disk
 opt.cursorline = true -- highlight the current line of the cursor
-opt.termguicolors = true
-opt.timeoutlen = 1000
-opt.ttimeoutlen = 0
-opt.showcmd = true
+opt.termguicolors = true -- use 24-bit colours
+opt.timeoutlen = 1000 -- wait a second for key mappings to be completed
+opt.ttimeoutlen = 0 -- terminal escape sequence timeout
+opt.showcmd = true -- show the command being run in the status line
 opt.swapfile = false -- no swap
 opt.background = "dark"
 opt.showmode = false -- don't show the mode as Airline is doing it
@@ -49,10 +49,9 @@ opt.shiftround = true -- round indent to multiple of shiftwidth
 opt.spell = false -- disable spell check by default
 opt.mouse = "a" -- enable mouse use, I like it for switching contexts (browser to terminal)
 opt.signcolumn = "yes" -- add signcolumn for git gutter and LSP
-opt.updatetime = 100 -- determines how soon git gutter will update after stopping typing, also swap file but we've disabled that anyway
-opt.scrolloff = 4
-opt.sidescrolloff = 8
-opt.autoread = true
+opt.updatetime = 100 -- determines how soon git gutter and swap file will update after stopping typing
+opt.scrolloff = 4 -- minimum number of lines to keep above and below cursor on scroll
+opt.sidescrolloff = 8 -- minimum number of screen columns to keep to the left and right of the cursor
 
 -- mappings --
 require("core.mappings")
