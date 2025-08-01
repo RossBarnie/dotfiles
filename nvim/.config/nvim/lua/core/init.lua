@@ -52,6 +52,10 @@ opt.signcolumn = "yes" -- add signcolumn for git gutter and LSP
 opt.updatetime = 100 -- determines how soon git gutter and swap file will update after stopping typing
 opt.scrolloff = 4 -- minimum number of lines to keep above and below cursor on scroll
 opt.sidescrolloff = 8 -- minimum number of screen columns to keep to the left and right of the cursor
+opt.undofile = true -- enable persistent undo
+opt.undodir = vim.fn.stdpath("state") .. "/undo" -- set persistent undo directory
+opt.diffopt:append("linematch:60") -- align and mark changes between most similar lines, max 60
+opt.clipboard = "unnamedplus" -- effectively use system clipboard for default yank, delete, change, put ops
 
 -- mappings --
 require("core.mappings")
