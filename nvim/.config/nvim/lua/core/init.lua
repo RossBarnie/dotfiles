@@ -71,3 +71,10 @@ if in_wsl then
     cache_enabled = true
   }
 end
+
+-- global diagnostic settings --
+
+vim.diagnostic.config({
+  jump = { float = true }
+})
+
