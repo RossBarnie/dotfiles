@@ -7,9 +7,9 @@ g.maplocalleader = " "
 
 -- general
 
-k.set({'n', 'v'}, ';', ':')
+k.set({ 'n', 'v' }, ';', ':')
 
- -- remove trailing whitespace
+-- remove trailing whitespace
 k.set('n', '<Leader>w', 'mm:%s/\\s\\+$//g<CR>:noh<CR>`m', { silent = true })
 
 -- indent whole file
