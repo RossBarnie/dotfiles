@@ -5,7 +5,6 @@ end
 local M = {}
 
 function M.setup()
-
   local capabilities = vim.tbl_deep_extend(
     "force",
     vim.lsp.protocol.make_client_capabilities(),
@@ -48,11 +47,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(ev)
     -- Enable completion triggered by <c-x><c-o>
     vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
-    local jump = function(count)
-      return function()
-        vim.diagnostic.jump({ count = count, float = true })
-      end
-    end
 
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
     if client and client.server_capabilities.inlayHintProvider then
@@ -64,8 +58,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- Buffer local mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local opts = { buffer = ev.buf }
-    vim.keymap.set('n', ']d', jump(1), opts)
-    vim.keymap.set('n', '[d', jump(-1), opts)
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
