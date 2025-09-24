@@ -2,13 +2,13 @@
 vim.api.nvim_create_augroup("vimrc", { clear = true })
 
 -- Resize nvim on terminal resize
-vim.api.nvim_create_autocmd({"VimResized"}, {
+vim.api.nvim_create_autocmd({ "VimResized" }, {
   pattern = { "*" },
   command = ":wincmd =",
 })
 
 -- Format using LSP on save
-vim.api.nvim_create_autocmd({"BufWritePre"}, {
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = { "*" },
   callback = vim.lsp.buf.format,
 })
@@ -16,6 +16,6 @@ vim.api.nvim_create_autocmd({"BufWritePre"}, {
 -- Populate loclist with the current buffer diagnostics
 vim.api.nvim_create_autocmd('DiagnosticChanged', {
   callback = function()
-    vim.diagnostic.setloclist({open = false})
+    vim.diagnostic.setloclist({ open = false })
   end,
 })
