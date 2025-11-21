@@ -19,7 +19,7 @@ function M.setup()
     bashls = {},
     eslint = require('lsp.eslint'),
     gopls = {},
-    jedi_language_server = require('lsp.jedi'),
+    jedi_language_server = {},
     jsonls = require('lsp.jsonls'),
     lua_ls = require('lsp.lua_ls'),
     marksman = {},
