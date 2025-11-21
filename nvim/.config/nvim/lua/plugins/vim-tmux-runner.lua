@@ -5,6 +5,7 @@ return {
     keys = {
       { "<leader>tr", "<cmd>VtrSendCommandToRunner<cr>", desc = "Run command in attached tmux pane ([t]est [r]unner)" },
       { "<leader>ta", "<cmd>VtrAttachToPane<cr>", desc = "Attach runner to tmux pane ([t]est runner [a]ttach)" },
+      { "<leader>tf", "<cmd>VtrFlushCommand<cr>", desc = "Clear the current command ([t]est runner [f]lush" },
     }
   }
 }
