@@ -29,3 +29,6 @@ k.set('n', '<Leader>do', ':diffoff!<CR>')
 
 -- Terminal mode
 k.set('t', '<ESC>', '<C-\\><C-n>')
+
+-- insert tilde
+k.set('i', '+-', '~')
