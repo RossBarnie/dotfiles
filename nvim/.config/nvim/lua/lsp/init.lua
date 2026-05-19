@@ -5,14 +5,23 @@ end
 local M = {}
 
 function M.setup()
-  local capabilities = vim.tbl_deep_extend(
-    "force",
-    vim.lsp.protocol.make_client_capabilities(),
-    require('cmp_nvim_lsp').default_capabilities()
-  )
+  -- local capabilities = vim.tbl_deep_extend(
+  --   "force",
+  --   vim.lsp.protocol.make_client_capabilities(),
+  --   require('cmp_nvim_lsp').default_capabilities()
+  -- )
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
 
   vim.lsp.config('*', {
-    capabilities = capabilities
+    capabilities = capabilities,
+    on_attach = function(client, bufnr)
+      vim.lsp.completion.enable(true, client.id, bufnr, {
+        autotrigger = true,
+        convert = function(item)
+          return { abbr = item.label:gsub('%b()', '') }
+        end,
+      })
+    end
   })
 
   local servers = {
@@ -23,10 +32,10 @@ function M.setup()
     jsonls = require('lsp.jsonls'),
     lua_ls = require('lsp.lua_ls'),
     marksman = {},
-    -- ruby_lsp = {},
+    ruby_lsp = {},
     ruff = {},
     rust_analyzer = {},
-    solargraph = {},
+    -- solargraph = {},
     ts_ls = {},
     yamlls = require('lsp.yamlls'),
   }
@@ -46,14 +55,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
     -- Enable completion triggered by <c-x><c-o>
-    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+    -- vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
-    if client and client.server_capabilities.inlayHintProvider then
-      vim.lsp.inlay_hint.enable(true)
-    else
-      vim.lsp.inlay_hint.enable(false)
-    end
+    vim.lsp.inlay_hint.enable(client and not not client.server_capabilities.inlayHintProvider)
 
     -- Buffer local mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions

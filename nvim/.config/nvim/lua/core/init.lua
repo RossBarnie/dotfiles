@@ -77,3 +77,12 @@ end
 vim.diagnostic.config({
   jump = { float = true }
 })
+
+require('vim._core.ui2').enable()
+vim.opt.completeopt:append("menuone")
+vim.opt.completeopt:append("popup")
+vim.opt.completeopt:append("noselect")
+vim.opt.complete = ".^3,w,b,u,t"
+vim.opt.winborder = "rounded"
+vim.o.autocomplete = true
+

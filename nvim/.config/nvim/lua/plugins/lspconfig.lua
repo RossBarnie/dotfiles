@@ -13,7 +13,7 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       'b0o/schemastore.nvim',
-      'hrsh7th/nvim-cmp',
+      -- 'hrsh7th/nvim-cmp',
     },
     version = '*',
     config = require('lsp').setup

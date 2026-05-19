@@ -13,7 +13,7 @@ return {
     config = function()
       require("lualine").setup {
         sections = {
-          lualine_c = { require('lsp-progress').progress }
+          lualine_c = { vim.ui.progress_status() }
         },
         winbar = {
           lualine_a = { 'tabs' },
