@@ -90,6 +90,10 @@ vim.diagnostic.config(
     virtual_text = {
       spacing = 4,
     },
+    float = {
+      border = "rounded",
+      source = "if_many",
+    },
     underline = true,
     severity_sort = true,
     signs = {
