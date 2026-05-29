@@ -38,6 +38,8 @@ function M.setup()
     -- solargraph = {},
     ts_ls = {},
     yamlls = require('lsp.yamlls'),
+    gdscript = {},
+    gdshader_lsp = {},
   }
 
   for server, config in pairs(servers) do
