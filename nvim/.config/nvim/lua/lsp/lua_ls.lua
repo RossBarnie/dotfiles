@@ -45,7 +45,10 @@ function M.on_init(client)
         globals = {
           "vim",
         }
-      }
+      },
+      telemetry = {
+        enable = false
+      },
     }
   )
 end
