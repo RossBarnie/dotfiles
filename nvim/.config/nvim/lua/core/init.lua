@@ -85,4 +85,5 @@ vim.opt.completeopt:append("noselect")
 vim.opt.complete = ".^3,w,b,u,t"
 vim.opt.winborder = "rounded"
 vim.o.autocomplete = true
+vim.o.iskeyword = "@,48-57,_,192-255,-"
 
