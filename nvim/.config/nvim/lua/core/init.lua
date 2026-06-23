@@ -87,3 +87,4 @@ vim.opt.winborder = "rounded"
 vim.o.autocomplete = true
 vim.o.iskeyword = "@,48-57,_,192-255,-"
 
+vim.env.PATH = vim.env.HOME .. ".local/share/mise/shims:" .. vim.env.PATH
