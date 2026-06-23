@@ -5,7 +5,7 @@ abbr -a -- g git
 abbr -a -- gsta 'git stash'
 abbr -a -- gstp 'git stash pop'
 abbr -a -- ga 'git add'
-abbr -a -- gc 'git commit'
+abbr -a -- gc 'git commit --verbose'
 abbr -a -- gba 'git branch --all'
 abbr -a -- gbd 'git branch --delete'
 abbr -a -- gbD 'git branch --delete --force'
