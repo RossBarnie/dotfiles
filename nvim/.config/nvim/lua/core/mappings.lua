@@ -4,7 +4,6 @@ local g = vim.g
 g.mapleader = ","
 g.maplocalleader = " "
 
-
 -- general
 
 k.set({ 'n', 'v' }, ';', ':')
@@ -32,3 +31,21 @@ k.set('t', '<ESC>', '<C-\\><C-n>')
 
 -- insert tilde
 k.set('i', '+-', '~')
+
+vim.api.nvim_create_autocmd({"OptionSet"}, {
+  pattern = {"background"},
+  callback = function(ev)
+    local lualine = require('lualine')
+    if vim.o.background == 'dark' then
+      print('dark theme')
+      vim.cmd("colorscheme nordic")
+      lualine.setup({ options = { theme = 'nordic' } })
+    else
+      print('late light')
+      vim.cmd("colorscheme gruvbox")
+      lualine.setup({ options = { theme = 'gruvbox' } })
+    end
+    -- force a full redraw:
+    vim.cmd("mode")
+  end
+})
