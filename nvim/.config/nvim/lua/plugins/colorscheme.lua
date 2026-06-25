@@ -12,9 +12,6 @@ return {
       })
     end
   },
-  {
-    'w0ng/vim-hybrid',
-    lazy = false
-  },
   'nordtheme/vim',
+  'morhetz/gruvbox'
 }
