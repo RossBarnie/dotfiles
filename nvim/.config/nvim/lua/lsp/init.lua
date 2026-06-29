@@ -40,6 +40,7 @@ function M.setup()
     yamlls = require('lsp.yamlls'),
     gdscript = {},
     gdshader_lsp = {},
+    just = {},
   }
 
   for server, config in pairs(servers) do
