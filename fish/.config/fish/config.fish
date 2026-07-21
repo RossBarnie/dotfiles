@@ -13,4 +13,14 @@ set -x RIPGREP_CONFIG_PATH $XDG_CONFIG_HOME/rg/.ripgreprc
 set -x EDITOR nvim
 set -x VISUAL nvim
 
-zoxide init fish | source
+if test -x $(which zoxide)
+  zoxide init fish | source
+end
+
+if test -x $(which direnv)
+  direnv hook fish | source
+end
+
+if test -x $(which mise)
+  mise activate fish | source
+end
